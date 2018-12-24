@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.8.12)  23 DEC 2018 22:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.8.12)  24 DEC 2018 21:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -430,6 +430,9 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 57.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Calculating math sizes for size <11> on input line 57.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
@@ -567,10 +570,10 @@ File: fprtpr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fprtpr-eps-converted-to.pdf>
 Package pdftex.def Info: fprtpr-eps-converted-to.pdf used on input line 307.
-(pdftex.def)             Requested size: 516.0pt x 730.62823pt.
+(pdftex.def)             Requested size: 490.19843pt x 694.09535pt.
 
 
-LaTeX Warning: Float too large for page by 87.9602pt on input line 310.
+LaTeX Warning: Float too large for page by 51.42732pt on input line 310.
 
 Package epstopdf Info: Source file: <tf.eps>
 (epstopdf)                    date: 2018-12-23 21:35:17
@@ -692,7 +695,7 @@ ocal/texlive/2017/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texli
 ve/2017/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2017/t
 exmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/
 fonts/type1/urw/times/utmri8a.pfb>
-Output written on conference_041818.pdf (8 pages, 777378 bytes).
+Output written on conference_041818.pdf (8 pages, 777325 bytes).
 PDF statistics:
  197 PDF objects out of 1000 (max. 8388607)
  122 compressed objects within 2 object streams

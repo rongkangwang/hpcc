@@ -14,7 +14,7 @@
 \title{Based on deep-learning apporach to real-time identify traffic of VoIP applications\\
 {\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
 should not be used}
-\thanks{Identify applicable funding agency here. If none, delete this.}
+%\thanks{Identify applicable funding agency here. If none, delete this.}
 }
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
@@ -57,7 +57,7 @@ email address}
 \maketitle
 
 \begin{abstract}
-  With their high service quality and low price cost, VoIP applications win most of the users' favor. However, owing to the convenience of VoIP service, there are some social tragedies caused by fraud call. In order to make VoIP applications serve human better, it is important to keep VoIP applications under supervision. The upgrade of VoIP technology makes the traditional identification method inefficient, so it is more difficult to manage VoIP applications. In this paper, we propose a generic approach, which can identify VoIP traffic from all kinds of VoIP applications (non-encrypted and encrypted). Using this approach, we can also determine source application of captured VoIP traffic in real time. Our approach uses deep learning to extract statistical features for matrix which is composed of several continuous RTP or RTCP packets. It is able to find most useful features using deep learning approach, in the meantime, it can get rid of human effort in exploring features. In addition, we design a real-time identification system to verify the efficiency of our approach. The evaluation results show that our approach can identify VoIP applications accurately.
+  With their high service quality and low price cost, VoIP applications win most of the users' favor. However, owing to the convenience of VoIP service, there are some social tragedies caused by fraud call. In order to make VoIP applications serve human better, it is important to keep VoIP applications under supervision. The upgrade of VoIP technology makes the traditional identification method inefficient, so it is more difficult to manage VoIP applications. In this paper, we propose a generic approach, which can identify VoIP traffic from all kinds of VoIP applications (non-encrypted and encrypted). Using this approach, we can also determine source application of captured VoIP traffic in real time. Our approach uses deep learning to extract statistical features for matrix which is composed of several continuous RTP or RTCP packets. It is able to find most useful features with deep learning approach, in the meantime, it can get rid of human effort in exploring features. In addition, we design a real-time identification system to verify the efficiency of our approach. The evaluation results show that our approach can identify VoIP applications accurately.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -304,7 +304,7 @@ FPR = \frac{{FP}}{{FP + TN}}
 
 \begin{figure*}[htp]
 \begin{center}
-\includegraphics[width=1\textwidth]{fprtpr.eps}
+\includegraphics[width=0.95\textwidth]{fprtpr.eps}
 \caption{The performance of the 8 models shown by TPR and FPR.}\label{fig:fprtpr}
 \end{center}
 \end{figure*}
