@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6670) (preloaded format=pdflatex 2018.4.24)  28 DEC 2018 21:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6670) (preloaded format=pdflatex 2018.4.24)  4 JAN 2019 17:41
 entering extended mode
 **./conference_041818.tex
 (conference_041818.tex
@@ -500,14 +500,14 @@ LaTeX Font Info:    Calculating math sizes for size <11> on input line 57.
 
 
 ] [2]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 106.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 108.
 
 
 (E:\CTeX\MiKTeX\tex\latex\psnfss\omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 106.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 108.
 Package epstopdf Info: Source file: <offline_architecture.eps>
 (epstopdf)                    date: 2018-05-06 20:32:18
 (epstopdf)                    size: 239124 bytes
@@ -517,13 +517,13 @@ Package epstopdf Info: Source file: <offline_architecture.eps>
 (epstopdf)                    size: 59239 bytes
 (epstopdf)             Command: <epstopdf --outfile=offline_architecture-eps-co
 nverted-to.pdf offline_architecture.eps>
-(epstopdf)             \includegraphics on input line 120.
+(epstopdf)             \includegraphics on input line 122.
 Package epstopdf Info: Output file is already uptodate.
 <offline_architecture-eps-converted-to.pdf, id=14, 548.0475pt x 462.72874pt>
 File: offline_architecture-eps-converted-to.pdf Graphic file (type pdf)
 <use offline_architecture-eps-converted-to.pdf>
 Package pdftex.def Info: offline_architecture-eps-converted-to.pdf  used on inp
-ut line 120.
+ut line 122.
 (pdftex.def)             Requested size: 232.19843pt x 196.05342pt.
 Package epstopdf Info: Source file: <online_architecture.eps>
 (epstopdf)                    date: 2018-05-06 20:56:28
@@ -533,13 +533,13 @@ Package epstopdf Info: Source file: <online_architecture.eps>
 (epstopdf)                    size: 52183 bytes
 (epstopdf)             Command: <epstopdf --outfile=online_architecture-eps-con
 verted-to.pdf online_architecture.eps>
-(epstopdf)             \includegraphics on input line 130.
+(epstopdf)             \includegraphics on input line 132.
 Package epstopdf Info: Output file is already uptodate.
 <online_architecture-eps-converted-to.pdf, id=15, 815.045pt x 507.8975pt>
 File: online_architecture-eps-converted-to.pdf Graphic file (type pdf)
 <use online_architecture-eps-converted-to.pdf>
 Package pdftex.def Info: online_architecture-eps-converted-to.pdf  used on inpu
-t line 130.
+t line 132.
 (pdftex.def)             Requested size: 232.19843pt x 144.69029pt.
  [3 <./offline_architecture-eps-converted-to.pdf> <./online_architecture-eps-co
 nverted-to.pdf>]
@@ -551,33 +551,33 @@ Package epstopdf Info: Source file: <dataset.eps>
 (epstopdf)                    size: 14078 bytes
 (epstopdf)             Command: <epstopdf --outfile=dataset-eps-converted-to.pd
 f dataset.eps>
-(epstopdf)             \includegraphics on input line 149.
+(epstopdf)             \includegraphics on input line 151.
 Package epstopdf Info: Output file is already uptodate.
 <dataset-eps-converted-to.pdf, id=72, 626.34pt x 236.885pt>
 File: dataset-eps-converted-to.pdf Graphic file (type pdf)
 <use dataset-eps-converted-to.pdf>
-Package pdftex.def Info: dataset-eps-converted-to.pdf  used on input line 149.
+Package pdftex.def Info: dataset-eps-converted-to.pdf  used on input line 151.
 (pdftex.def)             Requested size: 232.19843pt x 87.81956pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 168--170
+Underfull \hbox (badness 10000) in paragraph at lines 170--172
 \OT1/ptm/m/n/10 where $\OT1/cmr/m/n/10 ([]\OML/cmm/m/it/10 ; []; [][]; []; []\O
 T1/cmr/m/n/10 )$ \OT1/ptm/m/n/10 de-notes the ma-trix
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 168--170
+Underfull \hbox (badness 10000) in paragraph at lines 170--172
 \OT1/ptm/m/n/10 to be in-putted into soft-max in the 8th layer;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 168--170
+Underfull \hbox (badness 10000) in paragraph at lines 170--172
 \OT1/cmr/m/n/10 ([]([])\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 ([])\OML/cmm/m/it/1
 0 ; []; []\OT1/cmr/m/n/10 ([])\OML/cmm/m/it/10 ; []; []\OT1/cmr/m/n/10 ([]))$ \
 OT1/ptm/m/n/10 is the out-put of
  []
 
 
-Underfull \hbox (badness 1721) in paragraph at lines 168--170
+Underfull \hbox (badness 1721) in paragraph at lines 170--172
 \OT1/ptm/m/n/10 the 8th layer, it is pos-te-rior prob-a-bil-ity dis-tri-bu-tion
  of
  []
@@ -591,20 +591,20 @@ Package epstopdf Info: Source file: <flow.eps>
 (epstopdf)                    size: 16890 bytes
 (epstopdf)             Command: <epstopdf --outfile=flow-eps-converted-to.pdf f
 low.eps>
-(epstopdf)             \includegraphics on input line 202.
+(epstopdf)             \includegraphics on input line 204.
 Package epstopdf Info: Output file is already uptodate.
 <flow-eps-converted-to.pdf, id=98, 701.62125pt x 137.51375pt>
 File: flow-eps-converted-to.pdf Graphic file (type pdf)
 <use flow-eps-converted-to.pdf>
-Package pdftex.def Info: flow-eps-converted-to.pdf  used on input line 202.
+Package pdftex.def Info: flow-eps-converted-to.pdf  used on input line 204.
 (pdftex.def)             Requested size: 232.19843pt x 45.50977pt.
 
-Overfull \hbox (3.09885pt too wide) in paragraph at lines 228--228
+Overfull \hbox (3.09885pt too wide) in paragraph at lines 230--230
 []\OT1/ptm/m/n/8 Size(MB)| 
  []
 
 
-Overfull \hbox (3.09885pt too wide) in paragraph at lines 257--258
+Overfull \hbox (3.09885pt too wide) in paragraph at lines 259--260
 []\OT1/ptm/m/n/8 Size(MB)| 
  []
 
@@ -617,16 +617,16 @@ Package epstopdf Info: Source file: <fprtpr.eps>
 (epstopdf)                    size: 341932 bytes
 (epstopdf)             Command: <epstopdf --outfile=fprtpr-eps-converted-to.pdf
  fprtpr.eps>
-(epstopdf)             \includegraphics on input line 307.
+(epstopdf)             \includegraphics on input line 309.
 Package epstopdf Info: Output file is already uptodate.
 <fprtpr-eps-converted-to.pdf, id=122, 453.695pt x 642.4pt>
 File: fprtpr-eps-converted-to.pdf Graphic file (type pdf)
 <use fprtpr-eps-converted-to.pdf>
-Package pdftex.def Info: fprtpr-eps-converted-to.pdf  used on input line 307.
+Package pdftex.def Info: fprtpr-eps-converted-to.pdf  used on input line 309.
 (pdftex.def)             Requested size: 490.19843pt x 694.09535pt.
 
 
-LaTeX Warning: Float too large for page by 51.42732pt on input line 310.
+LaTeX Warning: Float too large for page by 51.42732pt on input line 312.
 
 Package epstopdf Info: Source file: <tf.eps>
 (epstopdf)                    date: 2018-03-08 22:26:32
@@ -636,12 +636,12 @@ Package epstopdf Info: Source file: <tf.eps>
 (epstopdf)                    size: 91149 bytes
 (epstopdf)             Command: <epstopdf --outfile=tf-eps-converted-to.pdf tf.
 eps>
-(epstopdf)             \includegraphics on input line 317.
+(epstopdf)             \includegraphics on input line 319.
 Package epstopdf Info: Output file is already uptodate.
 <tf-eps-converted-to.pdf, id=123, 1257.69875pt x 696.6025pt>
 File: tf-eps-converted-to.pdf Graphic file (type pdf)
 <use tf-eps-converted-to.pdf>
-Package pdftex.def Info: tf-eps-converted-to.pdf  used on input line 317.
+Package pdftex.def Info: tf-eps-converted-to.pdf  used on input line 319.
 (pdftex.def)             Requested size: 232.19843pt x 128.60371pt.
 Package epstopdf Info: Source file: <ml.eps>
 (epstopdf)                    date: 2018-05-07 00:08:32
@@ -651,60 +651,60 @@ Package epstopdf Info: Source file: <ml.eps>
 (epstopdf)                    size: 50403 bytes
 (epstopdf)             Command: <epstopdf --outfile=ml-eps-converted-to.pdf ml.
 eps>
-(epstopdf)             \includegraphics on input line 324.
+(epstopdf)             \includegraphics on input line 326.
 Package epstopdf Info: Output file is already uptodate.
 <ml-eps-converted-to.pdf, id=124, 613.29124pt x 487.8225pt>
 File: ml-eps-converted-to.pdf Graphic file (type pdf)
 <use ml-eps-converted-to.pdf>
-Package pdftex.def Info: ml-eps-converted-to.pdf  used on input line 324.
+Package pdftex.def Info: ml-eps-converted-to.pdf  used on input line 326.
 (pdftex.def)             Requested size: 232.19843pt x 184.69711pt.
 
-Overfull \hbox (3.4401pt too wide) in paragraph at lines 337--338
+Overfull \hbox (3.4401pt too wide) in paragraph at lines 339--340
 []\OT1/ptm/m/n/8 k=100| 
  []
 
 
-Overfull \hbox (0.92818pt too wide) in paragraph at lines 339--339
+Overfull \hbox (0.92818pt too wide) in paragraph at lines 341--341
 []\OT1/ptm/m/n/8 27.55| 
  []
 
 
-Overfull \hbox (0.92818pt too wide) in paragraph at lines 339--339
+Overfull \hbox (0.92818pt too wide) in paragraph at lines 341--341
 []\OT1/ptm/m/n/8 20.12| 
  []
 
 
-Overfull \hbox (0.92818pt too wide) in paragraph at lines 339--339
+Overfull \hbox (0.92818pt too wide) in paragraph at lines 341--341
 []\OT1/ptm/m/n/8 29.09| 
  []
 
 
-Overfull \hbox (0.92818pt too wide) in paragraph at lines 339--339
+Overfull \hbox (0.92818pt too wide) in paragraph at lines 341--341
 []\OT1/ptm/m/n/8 30.53| 
  []
 
 
-Overfull \hbox (0.92818pt too wide) in paragraph at lines 339--339
+Overfull \hbox (0.92818pt too wide) in paragraph at lines 341--341
 []\OT1/ptm/m/n/8 48.00| 
  []
 
 
-Overfull \hbox (0.92818pt too wide) in paragraph at lines 339--339
+Overfull \hbox (0.92818pt too wide) in paragraph at lines 341--341
 []\OT1/ptm/m/n/8 73.62| 
  []
 
 
-Overfull \hbox (4.92818pt too wide) in paragraph at lines 339--339
+Overfull \hbox (4.92818pt too wide) in paragraph at lines 341--341
 []\OT1/ptm/m/n/8 141.33| 
  []
 
 
-Overfull \hbox (4.92818pt too wide) in paragraph at lines 339--340
+Overfull \hbox (4.92818pt too wide) in paragraph at lines 341--342
 []\OT1/ptm/m/n/8 309.51| 
  []
 
 
-Overfull \hbox (21.02733pt too wide) in paragraph at lines 335--342
+Overfull \hbox (21.02733pt too wide) in paragraph at lines 337--344
  [][] 
  []
 
@@ -741,7 +741,7 @@ e1/public/amsfonts/cm/cmsy7.pfb><E:/CTeX/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmsy8.pfb><E:/CTeX/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><E:/CTeX/MiKTeX/font
 s/type1/urw/times/utmbi8a.pfb><E:/CTeX/MiKTeX/fonts/type1/urw/times/utmr8a.pfb>
 <E:/CTeX/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on conference_041818.pdf (8 pages, 796208 bytes).
+Output written on conference_041818.pdf (8 pages, 796135 bytes).
 PDF statistics:
  194 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
