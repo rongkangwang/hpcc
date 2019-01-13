@@ -123,27 +123,37 @@ Collecting raw traffic data, constructing and labeling dataset and training data
 \section{Architecture}
 \label{sec:architecture}
 In this section, we introduce the architecture of real-time identification system. There are 2 main phases in our architecture, offline training and online identification. We introduce the architecture of these two phases separately.
-%In this section, we introduce the architecture of real-time identification system and give a basic overview of the 2 main phases in the architecture. There are 2 main phases in our architecture, training phase and identification phase. Our architecture is shown in Figure~\ref{fig:architecture}
+%In this section, we introduce the architecture of real-time identification system and give a basic overview of the 2 main phases in the architecture. There are 2 main phases in our architecture, training phase and identification phase. 
+Our architecture is shown in Figure~\ref{fig:architecture}.
+
+\begin{figure}[htp]
+\begin{center}
+\includegraphics[width=0.47\textwidth]{architecture.eps}
+\caption{Architecture of identification system.}\label{fig:architecture}
+\end{center}
+\end{figure}
 
 \subsection{Offline Training}
-In offline training phase, we use 10 kinds of traffic of captured VoIP applications training deep leaning model, our goal is to maximize the accuracy of training and validation data. There are mainly 2 procedures, data preprocessing and model training. In preprocessing, we label our dataset firstly, random select k-packet with sliding window secondly. In the procedure of converting k-packets into matrices, we remove IP header and UDP header and normalize them. Then we input these matrices and label vector into deep learning model. The training process is maximizing the loss function to find an optimal function for identification. The output of training process is the identification model that we will use in real-time identification. In evaluation procedure, We evaluate the identification model by calculating loss and accuracy for evaluation data which needs to be normalized too. Offline training detailed in Figure~\ref{fig:offline_architecture.eps}.
+In offline training phase, we use 10 kinds of traffic of captured VoIP applications training deep leaning model, our goal is to maximize the accuracy of training and validation data. There are mainly 2 procedures, data preprocessing and model training. In preprocessing, we label our dataset firstly, random select k-packet with sliding window secondly. In the procedure of converting k-packets into matrices, we remove IP header and UDP header and normalize them. Then we input these matrices and label vector into deep learning model. The training process is maximizing the loss function to find an optimal function for identification. The output of training process is the identification model that we will use in real-time identification. In evaluation procedure, We evaluate the identification model by calculating loss and accuracy for evaluation data which needs to be normalized too. 
+%Offline training detailed in Figure~\ref{fig:offline_architecture.eps}.
 
-\begin{figure}[htp]
-\begin{center}
-\includegraphics[width=0.45\textwidth]{offline_architecture.eps}
-\caption{Architecture of offline training.}\label{fig:offline_architecture.eps}
-\end{center}
-\end{figure}
-\subsection{Online Identification}
-Online identification is the final part of our system. In this phase, there are 2 operations for every packet. We parse IP address and UDP port as its key for every packet. We maintain a map database for these keys. If the value of the corresponding key has been set, the value is the identification result of the packet. If the value is null, we search the key in pending flows database and add this packet into corresponding pending flow. When a pending flow is ready to be identified, it will be identified by identification model and set the identification result in map database. In Figure~\ref{fig:online_architecture.eps}, the number of pending flow key\_3 reaches k, it is ready to be identified. We show 2 captured packets whose keys are key\_1 and key\_2, packet corresponding to key\_1 will be identify with map database in real time, packet corresponding to key\_2 will be appended into its pending flow.
+%\begin{figure}[htp]
+%\begin{center}
+%\includegraphics[width=0.45\textwidth]{offline_architecture.eps}
+%\caption{Architecture of offline training.}\label{fig:offline_architecture.eps}
+%\end{center}
+%\end{figure}
+%\subsection{Online Identification}
+Online identification is the final part of our system. In this phase, there are 2 operations for every packet. We parse IP address and UDP port as its key for every packet. We maintain a map database for these keys. If the value of the corresponding key has been set, the value is the identification result of the packet. If the value is null, we search the key in pending flows database and add this packet into corresponding pending flow. When a pending flow is ready to be identified, it will be identified by identification model and set the identification result in map database.  %Figure~\ref{fig:online_architecture.eps}, 
+As the Figure~\ref{fig:architecture} shows, the number of pending flow key\_3 reaches k, it is ready to be identified. We show 2 captured packets whose keys are key\_1 and key\_2, packet corresponding to key\_1 will be identify with map database in real time, packet corresponding to key\_2 will be appended into its pending flow.
 
 %Identification phase is the final part of our system. In this phase, we use identification model to identify the k-packet captured in real-time. This phase includes 3 procedures, inspection of VoIP traffic, preprocessing and identification. In inspection procedure, we detect beginning of a VoIP connection. After this, we capture a k-packet and convert it to matrix in preprocessing procedure. Then we input the matrix into identification model, the identification model give us the result which is a specific VoIP application.
-\begin{figure}[htp]
-\begin{center}
-\includegraphics[width=0.45\textwidth]{online_architecture.eps}
-\caption{Architecture of online identification.}\label{fig:online_architecture.eps}
-\end{center}
-\end{figure}
+%\begin{figure}[htp]
+%\begin{center}
+%\includegraphics[width=0.45\textwidth]{online_architecture.eps}
+%\caption{Architecture of online identification.}\label{fig:online_architecture.eps}
+%\end{center}
+%\end{figure}
 
 \section{Traffic Collection and Processing}
 \label{sec:trafficcollectionandprocessing}
