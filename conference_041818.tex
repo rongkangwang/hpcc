@@ -279,28 +279,26 @@ The capturer maintain a pending flows queue and map packet into its matching pen
 \end{center}
 \end{figure}
 
-The second component is a rule-based filter, it receives k-packets sent by capturer. Because those non-VoIP flows are no value to us, it will filter out non-VoIP flows preliminarily. The remaining flows will be sent to next component to do further identification. 
+The second component is a rule-based filter, it receives k-packets sent by capturer. Because non-VoIP flows are no value to us, it will be filtered out to a certain extent. The remaining flows will be sent to next component to do further identification. We select benchmark values from our dataset and set several rules based on these benchmark values. Related algorithm and parameters are shown in Algorithm~\ref{algorithm:filter} and Table~\ref{tab:rules}. 
 
 \begin{table}[htbp]
-  \caption{Symbol employed in Algorithm 1.}
+  \caption{Benchmark value and threshold used in Algorithm~\ref{algorithm:filter}.}
   \label{tab:rules}
   \centering
   \begin{tabular}{l l l}
     \hline
     \textbf{} & \textbf{Symbol} & \textbf{Description}\\
     \hline
-    1 & min\_mpl      &   Minimum of mean packet length\\
-    2 & max\_mpl      &  Maximum of mean packet length \\
-    3 & min\_pl      &   Minimum of packet length\\
-    4 & max\_pl      &   Maximum of packet length\\
-    5 & min\_miat      &   Minimum of mean inter-arrival time\\
-    6 & max\_miat      &   Maximum of mean inter-arrival time\\
-    7 & min\_iat      &   Minimum of inter-arrival time\\
-    8 & max\_iat      &  Maximum of inter-arrival time \\
-    9 & ${\lambda_1}$, ${\lambda_2}$      &  2 thresholds for upper and lower limits \\
-    10 & Mean_pl()      &   Calculate mean length for current k-packet\\
-    11 & Mean_iat()      &   Calculate mean inter-arrival time for current k-packet\\
-    
+    1. & min\_mpl      &   Minimum of mean packet length in datatset\\
+    2. & max\_mpl      &  Maximum of mean packet length in datatset\\
+    3. & min\_pl      &   Minimum of packet length in datatset\\
+    4. & max\_pl      &   Maximum of packet length in datatset\\
+    5. & min\_miat      &   Minimum of mean inter-arrival time in datatset\\
+    6. & max\_miat      &   Maximum of mean inter-arrival time in datatset\\
+    7. & min\_iat      &   Minimum of inter-arrival time in datatset\\
+    8. & max\_iat      &  Maximum of inter-arrival time in datatset\\
+    9. & ${\lambda_1}$, ${\lambda_2}$      &  2 thresholds for upper and lower limits \\
+    10. & ${\varrho}$    &   Proportional threshold for number of packets\\
     \hline
   \end{tabular}
 \end{table}
@@ -309,19 +307,35 @@ The second component is a rule-based filter, it receives k-packets sent by captu
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 
 \begin{algorithm}[!h]
-\caption{Filter Algorithm}
+\caption{Algorithm to identify VoIP/non-VoIP Flows}
+\label{algorithm:filter}
 \begin{algorithmic}[1]
 \REQUIRE Flow: k-packet
 \ENSURE VoIP/non-VoIP
-\IF{there is a packet Px coming from X}
-    \IF{$x\neq x_t(Px)$}
-        \STATE $ST(S_X)=ON$
-        \STATE $ST(S_F)=ON$
-
+\IF{ ${\lambda_1}$min\_mpl $<$ mean packet length of current k-packet $<$ ${\lambda_2}$max\_mpl \textbf{and}  ${\lambda_1}$min\_miat $<$ mean inter-arrival time of current k-packet $<$ ${\lambda_2}$max\_miat  }
+    \FOR {packet in k-packet}
+       \IF{(packet length $<$ ${\lambda_1}$min\_pl )}
+       	\STATE $ct\_pl\_l \gets ct\_pl\_l +1$
+       \ENDIF
+       \IF{(packet length $>$ ${\lambda_2}$max\_pl )}
+       	\STATE $ct\_pl\_u \gets ct\_pl\_u+1$
+       \ENDIF
+       \IF{(packet inter-arrival time $<$ ${\lambda_1}$min\_iat )}
+       	\STATE $ct\_iat\_l  \gets ct\_iat\_l+1$
+       \ENDIF
+       \IF{(packet inter-arrival time $>$ ${\lambda_2}$max\_iat )}
+       	\STATE $ct\_iat\_u \gets ct\_iat\_u+1$
+       \ENDIF
+    \ENDFOR
+    \IF{ct\_pl\_l $<$ ${\varrho}$k \textbf{and} ct\_pl\_u $<$ ${\varrho}$k \textbf{and} ct\_iat\_l $<$ ${\varrho}$k \textbf{and} ct\_iat\_u $<$ ${\varrho}$k}
+        \RETURN $VoIP$
+    \ELSE  \RETURN $non-VoIP$
    \ENDIF
+\ELSE \RETURN $non-VoIP$
 \ENDIF
 \end{algorithmic}
 \end{algorithm}
+
 
 
  We input the matrix into identification model, it will output a vector whose size is $1 \times n$,  n denotes the number of VoIP applications that our identification model can identify. The vector indicates that this k-packet's likelihood estimation for every VoIP application. The index of the maximum value in the vector is the identification result. We will set the value in map database and remove this flow in pending flows. We do not have a way to identify unknown VoIP applications for now, but we want to improve our system. So we will research the packets whose maximum likelihood is less than 0.9.
