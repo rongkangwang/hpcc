@@ -12,47 +12,50 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Based on deep-learning apporach to real-time identify traffic of VoIP applications\\
-{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
-should not be used}
+\title{A real-time identification system for VoIP traffic in big-scale networks
+%Based on deep-learning apporach to real-time identify traffic of VoIP applications
+%{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and should not be used}
 %\thanks{Identify applicable funding agency here. If none, delete this.}
 }
 
-\author{\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
+
+\author{\IEEEauthorblockN{1\textsuperscript{st} Jianzhong Zhang}
 \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
 \textit{name of organization (of Aff.)}\\
 City, Country \\
 email address}
 \and
-\IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
+\IEEEauthorblockN{2\textsuperscript{nd} Rongkang Wang}
 \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
 \textit{name of organization (of Aff.)}\\
 City, Country \\
 email address}
 \and
-\IEEEauthorblockN{3\textsuperscript{rd} Given Name Surname}
+\IEEEauthorblockN{3\textsuperscript{rd} Mingxin Yin}
 \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
 \textit{name of organization (of Aff.)}\\
 City, Country \\
 email address}
 \and
-\IEEEauthorblockN{4\textsuperscript{th} Given Name Surname}
+\IEEEauthorblockN{4\textsuperscript{th} Ningjia Fu}
 \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
 \textit{name of organization (of Aff.)}\\
 City, Country \\
 email address}
 \and
-\IEEEauthorblockN{5\textsuperscript{th} Given Name Surname}
+\IEEEauthorblockN{5\textsuperscript{th} Yu Zhang}
 \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
 \textit{name of organization (of Aff.)}\\
 City, Country \\
 email address}
-\and
-\IEEEauthorblockN{6\textsuperscript{th} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address}
+}
+
+\author{
+\IEEEauthorblockN{Jianzhong Zhang, Rongkang Wang, Mingxin Yin, Ningjia Fu and Yu Zhang}
+\IEEEauthorblockA{\textit{Laboratory of Network and Information Security} \\
+\textit{College of Computer and Control Engineering, Nankai University}\\
+Tianjin, China \\
+zhangjz@nankai.edu.cn, wangrongkang@mail.nankai.edu.cn}
 }
 
 \maketitle
@@ -98,13 +101,13 @@ The remainder of this paper is structured as follows. In section \ref{sec:relate
 \section{Related Work}
 \label{sec:relatedwork}
 
-Traffic identification has been an active research topic in the past decade. The identification of VoIP has attracted the attention of many researches and there are lots of worthy results obtained. 
+Traffic identification has been an active research topic in the past decade. The identification of VoIP has attracted the attention of many researches and there are lots of worthy results obtained.
 
-Since early VoIP applications use the ports that IANA designated, some previous works identify VoIP traffic based on ports. With the development of VoIP applications, most of them use dynamic ports, the traditional identification method based on port numbers is not effective enough. Some researches \cite{14,16} identify specify protocol with their regular characteristics, such SIP, RTP. These kinds of works are too limited to identify private like Skype protocol. To overcome these difficulties, \cite{18} uses DPI (Deep Packet Inspection) way to extract application-level signatures to detect VoIP applications. However, the above methods cannot identify VoIP applications adopt encryption technologies. 
+Since early VoIP applications use the ports that IANA designated, some previous works identify VoIP traffic based on ports. With the development of VoIP applications, most of them use dynamic ports, the traditional identification method based on port numbers is not effective enough. Some researches \cite{14,16} identify specify protocol with their regular characteristics, such SIP, RTP. These kinds of works are too limited to identify private like Skype protocol. To overcome these difficulties, \cite{18} uses DPI (Deep Packet Inspection) way to extract application-level signatures to detect VoIP applications. However, the above methods cannot identify VoIP applications adopt encryption technologies.
 
 Statistical analysis method is another most frequently used method to detect VoIP traffic. Some characteristics such as packet-inter arrival time, packet size and rate of packet exchange are analyzed and used to detect VoIP traffic in \cite{2}. Authors in \cite{19} combine traffic flow statistic analysis with host behavior estimation. They set a parameter D to filter non-VoIP traffic and calculate the R by EL (large inter-packet time) and ES (small inter-packet time) to identify VoIP traffic. There are still some latest researches \cite{20,21} adopt rule-based and statistical analysis-based solution to detect VoIP traffic. These ways require many thresholds to be set for corresponding rules to identify VoIP traffic, it's powerless for a wide variety of VoIP applications. With the development of machine learning, this method has gained its new vitality. In \cite{5}, authors propose the machine learning approach to identify encrypted VoIP traffic. They build flow-based feature set and employ 3 learning algorithms for training dataset, the results show a good performance to classify VoIP traffic. Usually this type of statistical analysis methods aim at detecting VoIP traffic, which means identify VoIP traffic in VoIP/non-VoIP level. With machine learning method, it can achieve further classification in application level. The method proposed in \cite{5} trains the classifier with entire flows, and it requires a lot of works to build feature set. So they hardly could be used for real-time identification.
 
-There are several researches trying to identify VoIP traffic in real time. For detecting VoIP traffic quickly, the packets whose length in range of 60 to 150 bytes are treated as VoIP packets in \cite{3}. This method only aims at improving VoIP service quality, it cannot be used for accurate VoIP identification. A method that identifies peer-to-peer VoIP sessions using entropy and codec properties is proposed in \cite{4}, they consider several applications and their corresponding codecs so that the classifier can identify a VoIP session with the specific codec it uses. Moreover, they focus on the relation between the different lengths of N packets and explore their level of heterogeneity using entropy. In order to guarantee the real-time characteristic of the classifier, they adopt a sliding window with a constant size of N packets to access the heterogeneity in real time. Same real-time identification method used in \cite{22}, authors extract the PSD (Packet Size Distribution) of the first few packets of the entire Bi-flow. Results show this method can identify Bi-flow quickly after its establishment. All such methods that real-time identify VoIP traffic are based on features of sub-flows, but the limited features is too powerless to identify VoIP traffic in a tiny time period. 
+There are several researches trying to identify VoIP traffic in real time. For detecting VoIP traffic quickly, the packets whose length in range of 60 to 150 bytes are treated as VoIP packets in \cite{3}. This method only aims at improving VoIP service quality, it cannot be used for accurate VoIP identification. A method that identifies peer-to-peer VoIP sessions using entropy and codec properties is proposed in \cite{4}, they consider several applications and their corresponding codecs so that the classifier can identify a VoIP session with the specific codec it uses. Moreover, they focus on the relation between the different lengths of N packets and explore their level of heterogeneity using entropy. In order to guarantee the real-time characteristic of the classifier, they adopt a sliding window with a constant size of N packets to access the heterogeneity in real time. Same real-time identification method used in \cite{22}, authors extract the PSD (Packet Size Distribution) of the first few packets of the entire Bi-flow. Results show this method can identify Bi-flow quickly after its establishment. All such methods that real-time identify VoIP traffic are based on features of sub-flows, but the limited features is too powerless to identify VoIP traffic in a tiny time period.
 
 %Khan, F. I. U. A. (2008) \cite{2} proposed a generic technique for VoIP traffic detection. They analyze the characteristics of packet-inter arrival time, packet size and rate of packet exchange in the whole voice transmission stream. Their main goal is to use generic features to distinguish between VoIP traffic and other types of traffic. The following conclusions are given in this paper: Average packets/Sec rate is greater in VoIP as compared to other applications; Average packet size in bytes is small in VoIP as compared to other applications. Their method is important in detecting VoIP traffic, but it cannot be used for identify specific VoIP applications. Our main goal is to further identify specific original application for VoIP traffic.
 
@@ -123,7 +126,7 @@ Standing on the shoulders of prior researches and focusing on the difficulties w
 \section{Methodology}
 \label{sec:methodology}
 
-Most of the VoIP applications use RTP/RTCP to transfer data, some others use SRTP/SRTCP, QUIC, etc. For a large amount of similar voice packets, the ability to identify a single packet is low. In this paper, we extract features for sub-flows (we use k-packet to denote one in the following) which consists of several continuous VoIP packets from a VoIP flow. In real-time identification phase, we build a k-packet after a connection established and apply the features to identify the k-packet. In order to verify that our method is feasible, we did some basic researches from 2 aspects. 1) Whether the number of packets generated by VoIP applications in a limited time can support the identification. 2) Whether RTP/RTCP flows carry the features that support identification. We collected traffic and did analysis for 10 VoIP applications. According to our investigation, the number of packets generated by VoIP applications can reach tens or even hundreds in a second, which means we can use hundreds of packets for feature identification. Moreover, we investigate 2 features, PSD \cite{22} and codec \cite{4}. For PSD, there are 8 VoIP applications (AltCall, Jumblo, Xlite, Zoiper UUCall, Eyebeam, ExpressTalk and Bria) have constant PSD for voice transmission, 2 VoIP applications (Skype and KCCall) use variable-length packets. The length number used by Skype is completely random but limited to a range. For codecs, different routes of VoIP connections will use different codecs. The codecs we found list in Table~\ref{tab:codecs}, there are many subtypes for every codec. Except these 2 main features, We expect deep learning will extract more features such as inter-arrival time, total duration, etc. And more features cannot be observed by humans. 
+Most of the VoIP applications use RTP/RTCP to transfer data, some others use SRTP/SRTCP, QUIC, etc. For a large amount of similar voice packets, the ability to identify a single packet is low. In this paper, we extract features for sub-flows (we use k-packet to denote one in the following) which consists of several continuous VoIP packets from a VoIP flow. In real-time identification phase, we build a k-packet after a connection established and apply the features to identify the k-packet. In order to verify that our method is feasible, we did some basic researches from 2 aspects. 1) Whether the number of packets generated by VoIP applications in a limited time can support the identification. 2) Whether RTP/RTCP flows carry the features that support identification. We collected traffic and did analysis for 10 VoIP applications. According to our investigation, the number of packets generated by VoIP applications can reach tens or even hundreds in a second, which means we can use hundreds of packets for feature identification. Moreover, we investigate 2 features, PSD \cite{22} and codec \cite{4}. For PSD, there are 8 VoIP applications (AltCall, Jumblo, Xlite, Zoiper UUCall, Eyebeam, ExpressTalk and Bria) have constant PSD for voice transmission, 2 VoIP applications (Skype and KCCall) use variable-length packets. The length number used by Skype is completely random but limited to a range. For codecs, different routes of VoIP connections will use different codecs. The codecs we found list in Table~\ref{tab:codecs}, there are many subtypes for every codec. Except these 2 main features, We expect deep learning will extract more features such as inter-arrival time, total duration, etc. And more features cannot be observed by humans.
 
 \begin{table}[htbp]
   \caption{Codecs used by VoIP applications.}
@@ -185,9 +188,9 @@ In offline training phase, we extract features for 11 kinds of flows, which incl
 %\end{figure}
 
 \subsection{Online Identification}
-Online identification is the final part of our system. In this phase, we build flows for traffic in large-scale network. We parse IP address and UDP port as its key for each packet. We maintain a map database for these keys. If the value of the corresponding key has been set, the value is the identification result of the packet. If the value is null, we search the key in pending flows database and add this packet into corresponding pending flow. When a pending flow is ready to be identified, it will be identified by identification model and set the identification result in map database.  %Figure~\ref{fig:online_architecture.eps},
+Online identification is the final part of our system. In this phase, we build flows for traffic in large-scale network. We parse IP address and UDP port as its key for each packet. We maintain a key-value database for these keys. If the value of the corresponding key has been set, the value is the identification result of the packet. If the value is null, we search the key in pending flows database and add this packet into corresponding pending flow. When a pending flow is ready to be identified, it will be identified by identification model and set the identification result in database.  %Figure~\ref{fig:online_architecture.eps},
 
-As the Figure~\ref{fig:architecture} shows, the number of pending flow key\_3 reaches k, it is ready to be identified. We show 2 captured packets whose keys are key\_1 and key\_2, packet corresponding to key\_1 will be identify with map database in real time, packet corresponding to key\_2 will be appended into its pending flow.
+As the Figure~\ref{fig:architecture} shows, the number of pending flow key\_3 reaches k, it is ready to be identified. We show 2 captured packets whose keys are key\_1 and key\_2, packet corresponding to key\_1 will be real-time identified by querying the database, packet corresponding to key\_2 will be appended into its pending flow.
 
 %Identification phase is the final part of our system. In this phase, we use identification model to identify the k-packet captured in real-time. This phase includes 3 procedures, inspection of VoIP traffic, preprocessing and identification. In inspection procedure, we detect beginning of a VoIP connection. After this, we capture a k-packet and convert it to matrix in preprocessing procedure. Then we input the matrix into identification model, the identification model give us the result which is a specific VoIP application.
 %\begin{figure}[htp]
@@ -199,7 +202,7 @@ As the Figure~\ref{fig:architecture} shows, the number of pending flow key\_3 re
 
 \section{Traffic Collection and Processing}
 \label{sec:trafficcollectionandprocessing}
-Traffic collection is the beginning of all of the works. In order to get raw traffic of 10 VoIP applications mentioned above, we deploy 8 computers installed 10 kinds of VoIP applications. We installed 6 computers with Windows operating system, the others 2 computers installed with Linux operating system, because there are only 4 applications can be installed on Linux platform. We can establish ordinary VoIP calls among them, and all of them can dial the phone number directly. There are 4 cell phones ready to be called. We try our best to make calls from various places in the country to improve the credibility of our experiment. 
+Traffic collection is the beginning of all of the works. In order to get raw traffic of 10 VoIP applications mentioned above, we deploy 8 computers installed 10 kinds of VoIP applications. We installed 6 computers with Windows operating system, the others 2 computers installed with Linux operating system, because there are only 4 applications can be installed on Linux platform. We can establish ordinary VoIP calls among them, and all of them can dial the phone number directly. There are 4 cell phones ready to be called. We try our best to make calls from various places in the country to improve the credibility of our experiment.
 
 
 %Traffic collection is the beginning of all of the works. In order to get traffic of 10 VoIP applications mentioned above, we deploy 8 computers installed 10 kinds of VoIP applications. We installed 6 computers with Windows operating system, the others 2 computers installed with Linux operating system, because there are only 4 applications can be installed on Linux platform. We can establish ordinary VoIP calls among them, and they can dial the phone number directly. There are 4 cell phones ready to be called.
@@ -218,12 +221,12 @@ We need to construct our training dataset with captured raw traffic. We process 
 
 \section{Learning using Deep-Learning model}
 \label{sec:learningusingdeeplearningmodel}
-\subsection{Deep Learning model}
+\subsection{CNN model}
 With the rise of artificial intelligence technology, more and more excellent deep learning models appear. The oldest is CNN (Convolutional Neural Network) proposed by~\cite{6}. The LeNet is a development of the CNN proposed by~\cite{7}.~\cite{8} published an incredible neural network called AlexNet, this model get the best performance in the ImageNet competition held in 2012.~\cite{9} proposed VGG. The GoogleNet make a daring attempt in the design of the network, which proposed by~\cite{10}.~\cite{11} proposed ResNet, which has a deeper network structure up to 152 layers.
 
 %We compare CNN, AlexNet and GoogleNet with k set to 20 using a small part of dataset. The accuracy of CNN is above 94\%, the accuracies of AlexNet and GoogleNet are close to 1. GoogleNet costs more time and space than the other 2 models. We did comprehensive consideration about accuracy, efficiency, hardware requirements, data set size and other conditions, we decide to use AlexNet in the next further training. With the increase of dataset, we can use the models with a deeper network structure such as GoogleNet and ResNet.
 
-We did comprehensive consideration about accuracy, efficiency, hardware requirements, data set size and other conditions, we employed a 8-layer CNN model to train our data. Like many existing deep learning models, most of our ideas come from AlexNet. The CNN model includes 8 layers, consists of 5 convolution layers and 3 fully connected layers. We adopts ReLU (Rectified Linear Units) function as its activation function, and applies dropout in learning phase. 
+We did comprehensive consideration about accuracy, efficiency, hardware requirements, data set size and other conditions, we employed a 8-layer CNN model to train our data. Like many existing deep learning models, most of our ideas come from AlexNet. The CNN model includes 8 layers, consists of 5 convolution layers and 3 fully connected layers. We adopts ReLU (Rectified Linear Units) function as its activation function, and applies dropout in learning phase.
 
 In our experiment, the inputs are matrices with size of k$\times$l, where k is number of packets used for k-packet, l is the column of matrix, we use 256. We adjust the filter kernel to 5$\times$5, and we change the padding type to same in each layer. The first 7 layers in the structure dropout the neural according to a probability of 0.5, the first 2 fully connected layers are activated using the ReLU activation function, and the last fully connected layer is activated using Softmax function. We only keep 1 max-pooling operation in the last convolution layer, the pooling window set to 2$\times$2.
 
@@ -268,7 +271,7 @@ In this section, we introduce how to real-time identify VoIP traffic in our iden
 
 %In order to capture the VoIP traffic in real time, we design a real-time traffic capturer. This capturer can capture UDP traffic and separate flows by IP address and UDP port. There is a rule-based filter to filter out non-VoIP flows preliminarily, the remaining flows will be sent to the classifier. The classifier will accurately classify flows according to application type.
 
-%In most of VoIP applications, H.323 and SIP protocol are used for establishing and ending VoIP call. They both support call hold, call transfer, call forwarding, call waiting and some other supplementary services. So there are some researchers devote to monitor VoIP traffic based on call control signaling. It is no longer feasible to monitor VoIP traffic based on call control signaling. Here are several reasons: 1) SIP and H.323 protocols have their own development, and they support both UDP and TCP now. 2) The usage of ports is more and more irregular, it makes many identification methods useless. 3) More and more VoIP applications are encrypted to the traffic of call control. 4) For some VoIP applications, the server used for communication and that used for transmitting call control signaling are different. Due to these above reasons, it is hard to monitor VoIP call control signaling. These reasons also are our starting point to identify VoIP traffic with RTP/RTCP packets, all applications use RTP/RTCP protocol to transfer voice data. 
+%In most of VoIP applications, H.323 and SIP protocol are used for establishing and ending VoIP call. They both support call hold, call transfer, call forwarding, call waiting and some other supplementary services. So there are some researchers devote to monitor VoIP traffic based on call control signaling. It is no longer feasible to monitor VoIP traffic based on call control signaling. Here are several reasons: 1) SIP and H.323 protocols have their own development, and they support both UDP and TCP now. 2) The usage of ports is more and more irregular, it makes many identification methods useless. 3) More and more VoIP applications are encrypted to the traffic of call control. 4) For some VoIP applications, the server used for communication and that used for transmitting call control signaling are different. Due to these above reasons, it is hard to monitor VoIP call control signaling. These reasons also are our starting point to identify VoIP traffic with RTP/RTCP packets, all applications use RTP/RTCP protocol to transfer voice data.
 
 The capturer maintain a pending flows queue and map packet into its matching pending flow using its IP address and UDP port. Figure~\ref{fig:flow} shows the details to separate flows by IP address and UDP port. If a packet cannot find the corresponding pending flow, it creates a new pending flow and adopt IP address and UDP port as its key. If a packet is appended into pending flow, and the number of packet reaches k, this k-packet will be sent to next component filter. The capturer guarantees that all captured packets are UDP packets, and the capturer can remove dead flows from pending flows queue. Flows whose number of packets doesn't reach k within limited time will be considered as dead flows.
 
@@ -279,7 +282,7 @@ The capturer maintain a pending flows queue and map packet into its matching pen
 \end{center}
 \end{figure}
 
-The second component is a rule-based filter, it receives k-packets sent by capturer. Because non-VoIP flows are no value to us, it will be filtered out to a certain extent. The remaining flows will be sent to next component to do further identification. We select benchmark values from our dataset and set several rules based on these benchmark values. Related algorithm and parameters are shown in Algorithm~\ref{algorithm:filter} and Table~\ref{tab:rules}. 
+The second component is a rule-based filter, it receives k-packets sent by capturer. Because non-VoIP flows are no value to us, it will be filtered out to a certain extent. The remaining flows will be sent to next component to do further identification. We select benchmark values from our dataset and set several rules based on these benchmark values. Related algorithm and parameters are shown in Algorithm~\ref{algorithm:filter} and Table~\ref{tab:rules}.
 
 \begin{table}[htbp]
   \caption{Benchmark value and threshold used in Algorithm~\ref{algorithm:filter}.}
@@ -336,11 +339,13 @@ The second component is a rule-based filter, it receives k-packets sent by captu
 \end{algorithmic}
 \end{algorithm}
 
+The k-packets that pass through filter successfully will be input into the third component classifier, the features used by the classifier are extracted in offline training phase. 4 classifiers are trained by SVM, Random Forest, Naive Bayes and Decision Tree, all of them show good performance. The classifier takes k-dimensional matrix as input and output a vector whose size is $1 \times n$,  n denotes the number of VoIP applications that our identification model can identify. The vector indicates a k-packet's likelihood estimation for every VoIP application. The index of the maximum value in the vector is the identification result. The classifier can set the identification result in database, subsequent packets will be identified by querying the database.
 
 
- We input the matrix into identification model, it will output a vector whose size is $1 \times n$,  n denotes the number of VoIP applications that our identification model can identify. The vector indicates that this k-packet's likelihood estimation for every VoIP application. The index of the maximum value in the vector is the identification result. We will set the value in map database and remove this flow in pending flows. We do not have a way to identify unknown VoIP applications for now, but we want to improve our system. So we will research the packets whose maximum likelihood is less than 0.9.
 
-In order to detect VoIP voice traffic in real time, we have some rules. We only monitor the packets whose transport layer's protocol is UDP, and their packet length is less than 256. We parse the UDP packet that meets our requirements by RTP or RTCP protocol. If the UDP packet can be parsed correctly, we will process this packet with 2 operations, append it into corresponding pending flow or search identification result in map database. If it cannot be parsed, we ignored it. Moreover, we ignore packet that is alone, it makes no sense to monitor it. It is easy but it works better than the way based on call control signaling.
+%We input the matrix into identification model, it will output a vector whose size is $1 \times n$,  n denotes the number of VoIP applications that our identification model can identify. The vector indicates that this k-packet's likelihood estimation for every VoIP application. The index of the maximum value in the vector is the identification result. We will set the value in map database and remove this flow in pending flows. We do not have a way to identify unknown VoIP applications for now, but we want to improve our system. So we will research the packets whose maximum likelihood is less than 0.9.
+
+%In order to detect VoIP voice traffic in real time, we have some rules. We only monitor the packets whose transport layer's protocol is UDP, and their packet length is less than 256. We parse the UDP packet that meets our requirements by RTP or RTCP protocol. If the UDP packet can be parsed correctly, we will process this packet with 2 operations, append it into corresponding pending flow or search identification result in map database. If it cannot be parsed, we ignored it. Moreover, we ignore packet that is alone, it makes no sense to monitor it. It is easy but it works better than the way based on call control signaling.
 
 
 
@@ -352,18 +357,18 @@ In order to detect VoIP voice traffic in real time, we have some rules. We only 
 
 \section{Performance evaluation}
 \label{sec:performanceevaluation}
-In this section, we first show the dataset used in our experiment. Secondly, we give the specific parameters used in the training of deep neural networks. Finally, we show the experimental results and give the evaluation of the system performance.
+In this section, we introduce the dataset used in our experiment firstly. Secondly, we give the specific parameters used in the CNN model. Finally, we show the experimental results and give the evaluation of the system performance.
 \subsection{Dataset}
 \label{sec:dataset}
-We capture traffic and divide it into 2 dataset for these 10 VoIP applications. We use dataset1 to train identification models, and we use dataset2 to examine these models. The details of dataset1 used for training shown in Table~\ref{tab:traffic}.
+We divide captured traffic into 2 dataset. We use CNN model to train dataset1, and we use dataset2 to examine extracted features. The details of dataset1 used for training shown in Table~\ref{tab:traffic}.
 
 \begin{table}[htbp]
   \caption{The details of dataset1.}
   \label{tab:traffic}
   \centering
-  \begin{tabular}{p{1.5cm}p{2cm}p{1cm}p{1.5cm}}
+  \begin{tabular}{l l l l}
     \hline
-    VoIP & Platform & Size(MB)& Num.(k=10)\\
+    \textbf{VoIP} & \textbf{Platform} & \textbf{Size(MB)}& \textbf{Num.(k=10)}\\
     \hline
     Skype      & Windows, Linux  & 3908.8  &  669984  \\
     UUCall      & Windows  & 2709.4  &  691566  \\
@@ -375,12 +380,13 @@ We capture traffic and divide it into 2 dataset for these 10 VoIP applications. 
     Eyebeam      & Windows  & 4524.7  &  616773  \\
     ExpressTalk      & Windows  & 4633.1  &  602637  \\
     Bria      & Windows  & 4476.0  &  598724  \\
+    non-VoIP      & Windows  & 11324.5  &  973522  \\
     \hline
   \end{tabular}
   %\caption{The details of dataset1.}
 \end{table}
 
-The forth column shows the num. of k-packet where k is 10, of course, we also process the dataset according to k is 2, 4, 6, 8 and so on. 80\% of the k-packet are used for training when 20\% used for validating. It decides the first dimension of the matrix that will be input into AlexNet model.
+The forth column shows the num. of k-packet where k is 10, of course, we also process the dataset according to k is 2, 4, 6, 8 and so on. It decides the first dimension of the matrix that will be input into CNN model. 80\% of the k-packets are used for training when 20\% used for validating.
 
 \subsection{Parameter Setting}
 \label{sec:params}
@@ -390,9 +396,9 @@ The optimization algorithm SGD used in training phase is not adaptive for learni
   \caption{The details of Alexnet parameters.}
   \label{tab:params}
   \centering
-  \begin{tabular}{p{1cm}p{2cm}p{2cm}p{1cm}}
+  \begin{tabular}{l l l l}
     \hline
-    Model & Input\_Shape &Num. of Parm &Size(MB)\\
+    \textbf{Model} & \textbf{Input\_Shape} & \textbf{Num. of Parm}&\textbf{Size(MB)}\\
     \hline
     k=2      & ${2 \times 256 \times 1}$  & 21827434  &87.3  \\
     k=4      & ${4 \times 256 \times 1}$  & 21827434  &87.3  \\
@@ -409,14 +415,14 @@ The optimization algorithm SGD used in training phase is not adaptive for learni
 
 \subsection{Experiment Results}
 \label{sec:experimentresults}
-The dataset listed in Section~\ref{sec:dataset} is used to train 8 models. With the parameter setting in Section~\ref{sec:params}, we get 8 identification models. The training and validating accuracies are shown in Table~\ref{tab:acc4models}.
+The dataset listed in Section~\ref{sec:dataset} is used to train. With the parameter setting in Section~\ref{sec:params}, we get 8 feature sets for different k. The training and validating accuracies are shown in Table~\ref{tab:acc4models}.
 \begin{table}
-  \caption{The training and validating accuracy of 8 identification models.}
+  \caption{The training and validating accuracy of 8 CNN models.}
   \label{tab:acc4models}
   \centering
-  \begin{tabular}{p{1cm}p{1.5cm}p{1.5cm}p{2cm}}
+  \begin{tabular}{l l l l}
     \hline
-    Model & Loss &Train Acc. &Validate Acc.\\
+    \textbf{Model} & \textbf{Loss} & \textbf{Train Acc.}&\textbf{Validate Acc.}\\
     \hline
     k=2      & 0.015865  & 0.995560  &0.996130  \\
     k=4      & 0.007670  & 0.997700  &0.997860 \\
@@ -431,7 +437,7 @@ The dataset listed in Section~\ref{sec:dataset} is used to train 8 models. With 
   %\caption{The training and validating accuracy of 8 identification models.}
 \end{table}
 
-For the above 8 identification models, we use TPR (True Positive Rate) and FPR (False Positive Rate) to evaluate them. TPR reflects the probability of positive samples are identified correctly, and FPR reflects the probability of negative samples are identified as positive samples incorrectly.TPR can be computed by Equation 5.
+For the above 8 CNN models, we use TPR (True Positive Rate) and FPR (False Positive Rate) to evaluate them. TPR reflects the probability of positive samples are identified correctly, and FPR reflects the probability of negative samples are identified as positive samples incorrectly. TPR can be computed by Equation 5.
 \begin{equation}
 TPR = \frac{{TP}}{{TP + FN}}
 \end{equation}
@@ -447,16 +453,16 @@ FPR = \frac{{FP}}{{FP + TN}}
 \end{center}
 \end{figure*}
 
-In our experiment, the identification rate for dataset1 is close to 1. When we examine these 8 models with dataset2, there are some outliers. They can be seen in the first 4 charts shown on Figure~\ref{fig:fprtpr}, model-20 for Skype, model-4 for Xlite and so on. This is overfitting, the identification model that we trained is overfitting the dataset. In the future research, we first consider add the L1-norm and L2-norm into our model, we will merge dataset2 into dataset1 to enlarge dataset to avoid overfitting. Apart from this, these charts show good performance to most of VoIP applications.
+In our experiment, the identification rate for dataset1 is close to 1. When we examine these 8 models with dataset2, there are some outliers. They can be seen in the first 4 charts shown on Figure~\ref{fig:fprtpr}, model-20 for Skype, model-4 for Xlite and so on. This means these 2 models that we trained is overfitting the dataset. In the future research, we consider add the L1-norm and L2-norm into our model, we will merge dataset2 into dataset1 to enlarge dataset to avoid overfitting. Apart from this, these charts show good performance to most of VoIP applications.
 
-Figure~\ref{fig:tf} shows the probability distribution of true result and false result of dataset1 and dataset2, which true result means a k-packet is identified correctly and false result means a k-packet is identified in correctly. It shows the maximum probabilities of true results are generally close to 1, and they are disperse from 0.2 to 0.98.
+Figure~\ref{fig:tf} shows the probability distribution of true result and false result of dataset1 and dataset2, which true result means a k-packet is identified correctly and false result means a k-packet is identified incorrectly. It shows the maximum probabilities of true results are generally close to 1, and they are disperse from 0.2 to 0.98.
 \begin{figure}[htp]
 \begin{center}
 \includegraphics[width=0.45\textwidth]{tf.eps}
 \caption{The probability distribution of true result and false result.}\label{fig:tf}
 \end{center}
 \end{figure}
-We use the feature set we extracted by neural network to train 4 machine learning models, the accuracy shows in Figure~\ref{fig:ml}. The previous research we mentioned in Section~\ref{sec:relatedwork}, they use machine learning and feature set extracted by human to identify VoIP traffic. With our feature set extracted by deep learning, the accuracy is higher than 98\%.
+We use the feature sets we extracted by CNN to train 4 machine learning models, the accuracy shows in Figure~\ref{fig:ml}. The previous research we mentioned in Section~\ref{sec:relatedwork}, they use machine learning methods and feature set extracted by human to identify VoIP traffic. With our feature sets extracted by deep learning, the accuracy is up to 98\%.
 \begin{figure}
   \centering
   \includegraphics[width=0.45\textwidth]{ml.eps}
@@ -464,15 +470,15 @@ We use the feature set we extracted by neural network to train 4 machine learnin
   \label{fig:ml}
 \end{figure}
 
-The identification efficiency of SVM is better than original AlexNet model, we deploy identification model trained by SVM into real network. We capture 100 flows for each VoIP application and identify them by these models. Time consumed by these models is shown on Table~\ref{tab:time4folws}. From this table we can see that it costs 3 seconds when k is 100, it is tolerate for a long call which lasts for a few minutes. For fraud calls which always end quickly, identification time needs to be further reduced, we have to consider using the smaller k.
+The identification efficiency of SVM is better than original CNN model, we deploy classifiers trained by SVM into real network. We count the time consumed for identifying 100 flows with our system. Time consumed is shown on Table~\ref{tab:time4folws}. From this table we can see that it costs 3 seconds when k is 100, it is tolerate for a long call which lasts for minutes. For that call which end quickly, make identification time shorter is more valuable, classifiers with smaller k will obtain identification results faster.
 \begin{table}
   \caption{The time consumed to identify 100 flows.}
   %\caption{The time consumed to identify 100 flows.}
   \label{tab:time4folws}
   \centering
-  \begin{tabular}{p{1cm}p{0.6cm}p{0.6cm}p{0.6cm}p{0.6cm}p{0.6cm}p{0.6cm}p{0.6cm}p{0.6cm}}
+  \begin{tabular}{p{0.7cm}p{0.5cm}p{0.5cm}p{0.5cm}p{0.5cm}p{0.5cm}p{0.5cm}p{0.6cm}p{0.6cm}}
     \hline
-    Model & k=2 &k=4 &k=6&k=8&k=10&k=20&k=40&k=100\\
+    \textbf{Model} & \textbf{k=2} &\textbf{k=4}&\textbf{k=6}&\textbf{k=8}&\textbf{k=10}&\textbf{k=20}&\textbf{k=40}&\textbf{k=100}\\
     \hline
     Time(s)      & 27.55  & 20.12  &29.09&30.53&48.00&73.62&141.33&309.51  \\
     \hline
@@ -481,7 +487,7 @@ The identification efficiency of SVM is better than original AlexNet model, we d
 
 \section{Conclusion}
 \label{sec:conclusion}
-In our work, we propose a generic approach to identify VoIP application in realtime. Then we deploy this approach into a real-time identification system, and the system shows good performance. Our approach cannot identify unknown VoIP applications, we will go a step further. We only deploy this system in a small network to test its real-time performance, we will deploy our system into real network and apply Storm in our system.
+In our work, we propose a generic approach to real-time identify traffic of specific VoIP applications. Then we deploy this approach into a real-time identification system, and the system shows good performance. Our approach cannot identify unknown VoIP applications, we will go a step further. Next we want to cover more kinds of application traffic such as game traffic and video traffic.
 
 
 \bibliographystyle{IEEEtran}
