@@ -247,7 +247,7 @@ In our experiment, the inputs are matrices with size of k$\times$l, where k is n
 
 %The inputs of AlexNet are matrices with size of k$\times$l, where k is number of packets used for k-packet, l is the column of matrix, we use 256. In our experiment, several k values we select are not fit into AlexNet. So we do some adjustment on original AlexNet, we adjust the filter kernel to 5$\times$5, and we change the padding type to same in each layer. The first 7 layers in the structure dropout the neural according to a probability of 0.5, the first 2 fully connected layers are activated using the ReLU activation function, and the last fully connected layer is activated using Softmax function. We only keep a max-pooling operation in the last convolution layer, the pooling window set to 2$\times$2.
 \subsection{Learning}
-We use Softmax function as the activation function of the last layer. There are 11 types of traffic in our experiment, we calculate the posterior probability for unknown traffic. Softmax function shows as
+We use Softmax function as the activation function of the last layer. There are 11 types of traffic in our experiment, we calculate the posterior probability for unknown flow to identify its application type. Softmax function shows as
 \begin{equation}
 \hat P({V_i}) = softmax({V_i}) = \frac{{{e^{{V_i}}}}}{{\sum\limits_{j = 1}^n {{e^{{V_j}}}} }}
 \end{equation}
@@ -263,7 +263,7 @@ We use SGD (Stochastic Gradient Descent) optimizer to minimize the loss function
 \begin{equation}
 \Delta {X_t} = \tau {M_{t - 1}} - \eta \nabla f({X_{t - 1}} + \tau {M_{t - 1}})
 \end{equation}
-where ${\tau}$ denotes the factor of momentum, ${\eta}$ denotes learning rate. ${g_t} = \nabla f({X_{t - 1}} + \tau {M_{t - 1}})$ is the gradient of transition point, where $\Delta {X_t}$ denotes the real decreasing displacement, ${X_t}$ denotes the position at time t, ${M_t}$ denotes the momentum ate time t.
+where ${\tau}$ denotes the factor of momentum, ${\eta}$ denotes learning rate. ${g_t} = \nabla f({X_{t - 1}} + \tau {M_{t - 1}})$ is the gradient of transition point, where $\Delta {X_t}$ denotes the real decreasing displacement, ${X_t}$ denotes the position at time t, ${M_t}$ denotes the momentum at time t.
 
 In our experiment, learning rate will decay after each epoch, decay rule shown as:
 \begin{equation}
@@ -272,7 +272,7 @@ In our experiment, learning rate will decay after each epoch, decay rule shown a
 where ${\rho }$ denotes the decay factor, i denotes the number of epoch.
 
 \subsection{Feature Set}
-Our method is to get a more precise feature set for identifying VoIP traffic. The feature set extracted by deep learning is unreadable. The feature set is used to train classifiers with SVM, random forest, decision tree and naive bayes in our work. All of the classifiers trained with 4 machine learning methods achieved good accuracy. These classifiers will be used in real-time identification. 
+Our method is to get a more precise feature set for identifying VoIP traffic. The feature set extracted by deep learning is unreadable. The feature set is used to train classifiers with SVM, random forest, decision tree and naive bayes in our work, these classifiers are more real-time than the CLNN model. All of the classifiers trained with 4 machine learning methods achieved good accuracy. These classifiers will be used in real-time identification. 
 
 \section{Real-time identification}
 \label{sec:realtimeidentification}
@@ -349,7 +349,7 @@ The second component is a rule-based filter, it receives k-packets sent by captu
 \end{algorithmic}
 \end{algorithm}
 
-The k-packets that pass through filter successfully will be input into the third component classifier, the features used by the classifier are extracted in offline training phase. 4 kinds of classifiers are trained by SVM, Random Forest, Naive Bayes and Decision Tree, all of them show good performance. The classifier takes k-dimensional matrix as input and output a vector whose size is $1 \times n$,  n denotes the number of VoIP applications that our identification model can identify. The vector indicates a k-packet's likelihood estimation for every VoIP application. The index of the maximum value in the vector is the identification result. The classifier can set the identification result in database, subsequent packets will be identified by querying the database. In the process of identification, one flow will pass through multiple k-classifiers when it grows up to different k stages, these classifiers will give their own identification results and corresponding possibilities. 
+The k-packets that pass through filter successfully will be input into the third component classifier, the features used by the classifier are extracted in offline training phase. 4 kinds of classifiers are trained by SVM, Random Forest, Naive Bayes and Decision Tree, we select SVM classifier which have the best performance into our real-time system. The classifier takes k-dimensional matrix as input and output a vector whose size is $1 \times n$,  n denotes the number of VoIP applications that our identification model can identify. The vector indicates a k-packet's likelihood estimation for every VoIP application. The index of the maximum value in the vector is the identification result. The classifier can set the identification result in database, subsequent packets will be identified by querying the database. In the process of identification, one flow will pass through multiple k-classifiers when it grows up to different k stages, these classifiers will give their own identification results and corresponding possibilities. 
 
 We adopt Apache Storm as our stream processing computation engine, and Apache Kafka as backup and load balance system to interact with networks. Figure~\ref{fig:storm} shows the Storm topology of our system. There is a Kafka Spout as the Kafka consumer client to consume the traffic from the network. A Bolt as capturer, a Bolt to distribute pending flows to next Bolt, the subsequent Bolt may be a filter or a classifier, which is determined by our settings based on k. The last Bolt RedisWriter is in charge of writing the identification results to the Redis database, and in order to get more accurate identification result, the result in database will be replaced by the classifier that gets higher probability.
 
