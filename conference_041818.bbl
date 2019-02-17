@@ -139,4 +139,11 @@ K.~He, X.~Zhang, S.~Ren, and J.~Sun, ``Deep residual learning for image
   recognition,'' in \emph{Computer Vision and Pattern Recognition}, 2016, pp.
   770--778.
 
+\bibitem{clnn}
+T.~N. Sainath, O.~Vinyals, A.~Senior, and H.~Sak, ``Convolutional, long
+  short-term memory, fully connected deep neural networks,'' in
+  \emph{Acoustics, Speech and Signal Processing (ICASSP), 2015 IEEE
+  International Conference on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE,
+  2015, pp. 4580--4584.
+
 \end{thebibliography}

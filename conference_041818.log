@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.8.12)  9 FEB 2019 16:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.8.12)  17 FEB 2019 17:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -457,10 +457,10 @@ File: omsptm.fd
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 169.
 Package epstopdf Info: Source file: <architecture.eps>
-(epstopdf)                    date: 2019-02-06 00:57:29
+(epstopdf)                    date: 2019-02-17 17:04:15
 (epstopdf)                    size: 579108 bytes
 (epstopdf)             Output file: <architecture-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-02-06 00:58:29
+(epstopdf)                    date: 2019-02-17 17:04:15
 (epstopdf)                    size: 178024 bytes
 (epstopdf)             Command: <repstopdf --outfile=architecture-eps-converted
 -to.pdf architecture.eps>
@@ -476,10 +476,10 @@ Package pdftex.def Info: architecture-eps-converted-to.pdf used on input line 1
 (pdftex.def)             Requested size: 242.52063pt x 251.68008pt.
  [3 <./architecture-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <dataset.eps>
-(epstopdf)                    date: 2019-01-27 12:30:00
+(epstopdf)                    date: 2019-02-17 17:04:15
 (epstopdf)                    size: 77559 bytes
 (epstopdf)             Output file: <dataset-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-01-27 12:30:00
+(epstopdf)                    date: 2019-02-17 17:04:15
 (epstopdf)                    size: 14078 bytes
 (epstopdf)             Command: <repstopdf --outfile=dataset-eps-converted-to.p
 df dataset.eps>
@@ -492,46 +492,46 @@ File: dataset-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: dataset-eps-converted-to.pdf used on input line 224.
 (pdftex.def)             Requested size: 232.19843pt x 87.81956pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 250--252
+Underfull \hbox (badness 10000) in paragraph at lines 253--255
 \OT1/ptm/m/n/10 where $\OT1/cmr/m/n/10 ([]\OML/cmm/m/it/10 ; []; [][]; []; []\O
 T1/cmr/m/n/10 )$ \OT1/ptm/m/n/10 de-notes the ma-trix
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 250--252
+Underfull \hbox (badness 10000) in paragraph at lines 253--255
 \OT1/ptm/m/n/10 to be in-putted into Soft-max in the 8th layer;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 250--252
+Underfull \hbox (badness 10000) in paragraph at lines 253--255
 \OT1/cmr/m/n/10 ([]([])\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 ([])\OML/cmm/m/it/1
 0 ; []; []\OT1/cmr/m/n/10 ([])\OML/cmm/m/it/10 ; []; []\OT1/cmr/m/n/10 ([]))$ \
 OT1/ptm/m/n/10 is the out-put of
  []
 
 
-Underfull \hbox (badness 1721) in paragraph at lines 250--252
+Underfull \hbox (badness 1721) in paragraph at lines 253--255
 \OT1/ptm/m/n/10 the 8th layer, it is pos-te-rior prob-a-bil-ity dis-tri-bu-tion
  of
  []
 
 [4 <./dataset-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <flow.eps>
-(epstopdf)                    date: 2019-01-27 12:30:00
+(epstopdf)                    date: 2019-02-17 17:04:15
 (epstopdf)                    size: 86963 bytes
 (epstopdf)             Output file: <flow-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-01-27 12:30:00
+(epstopdf)                    date: 2019-02-17 17:04:15
 (epstopdf)                    size: 16890 bytes
 (epstopdf)             Command: <repstopdf --outfile=flow-eps-converted-to.pdf 
 flow.eps>
-(epstopdf)             \includegraphics on input line 287.
+(epstopdf)             \includegraphics on input line 290.
 Package epstopdf Info: Output file is already uptodate.
 
 <flow-eps-converted-to.pdf, id=84, 701.62125pt x 137.51375pt>
 File: flow-eps-converted-to.pdf Graphic file (type pdf)
 
 <use flow-eps-converted-to.pdf>
-Package pdftex.def Info: flow-eps-converted-to.pdf used on input line 287.
+Package pdftex.def Info: flow-eps-converted-to.pdf used on input line 290.
 (pdftex.def)             Requested size: 232.19843pt x 45.50977pt.
 
 
@@ -539,137 +539,137 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [5 <./flow-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <storm.eps>
-(epstopdf)                    date: 2019-02-01 23:20:53
+(epstopdf)                    date: 2019-02-17 17:04:15
 (epstopdf)                    size: 1323206 bytes
 (epstopdf)             Output file: <storm-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-02-01 23:21:12
+(epstopdf)                    date: 2019-02-17 17:04:15
 (epstopdf)                    size: 106507 bytes
 (epstopdf)             Command: <repstopdf --outfile=storm-eps-converted-to.pdf
  storm.eps>
-(epstopdf)             \includegraphics on input line 355.
+(epstopdf)             \includegraphics on input line 358.
 Package epstopdf Info: Output file is already uptodate.
 
 <storm-eps-converted-to.pdf, id=109, 1029.8475pt x 346.29375pt>
 File: storm-eps-converted-to.pdf Graphic file (type pdf)
 
 <use storm-eps-converted-to.pdf>
-Package pdftex.def Info: storm-eps-converted-to.pdf used on input line 355.
+Package pdftex.def Info: storm-eps-converted-to.pdf used on input line 358.
 (pdftex.def)             Requested size: 247.6778pt x 83.28128pt.
 Package epstopdf Info: Source file: <fprtpr-hpcc.eps>
-(epstopdf)                    date: 2019-01-27 12:30:00
+(epstopdf)                    date: 2019-02-17 17:04:15
 (epstopdf)                    size: 831281 bytes
 (epstopdf)             Output file: <fprtpr-hpcc-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-01-27 12:30:00
+(epstopdf)                    date: 2019-02-17 17:04:15
 (epstopdf)                    size: 242154 bytes
 (epstopdf)             Command: <repstopdf --outfile=fprtpr-hpcc-eps-converted-
 to.pdf fprtpr-hpcc.eps>
-(epstopdf)             \includegraphics on input line 467.
+(epstopdf)             \includegraphics on input line 470.
 Package epstopdf Info: Output file is already uptodate.
 
 <fprtpr-hpcc-eps-converted-to.pdf, id=110, 825.0825pt x 577.15625pt>
 File: fprtpr-hpcc-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fprtpr-hpcc-eps-converted-to.pdf>
-Package pdftex.def Info: fprtpr-hpcc-eps-converted-to.pdf used on input line 46
-7.
+Package pdftex.def Info: fprtpr-hpcc-eps-converted-to.pdf used on input line 47
+0.
 (pdftex.def)             Requested size: 516.0pt x 360.95073pt.
  [6 <./storm-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <tf.eps>
-(epstopdf)                    date: 2019-01-27 12:30:00
+(epstopdf)                    date: 2019-02-17 17:04:15
 (epstopdf)                    size: 2573714 bytes
 (epstopdf)             Output file: <tf-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-01-27 12:30:00
+(epstopdf)                    date: 2019-02-17 17:04:15
 (epstopdf)                    size: 91149 bytes
 (epstopdf)             Command: <repstopdf --outfile=tf-eps-converted-to.pdf tf
 .eps>
-(epstopdf)             \includegraphics on input line 477.
+(epstopdf)             \includegraphics on input line 480.
 Package epstopdf Info: Output file is already uptodate.
 
 <tf-eps-converted-to.pdf, id=134, 1257.69875pt x 696.6025pt>
 File: tf-eps-converted-to.pdf Graphic file (type pdf)
 
 <use tf-eps-converted-to.pdf>
-Package pdftex.def Info: tf-eps-converted-to.pdf used on input line 477.
+Package pdftex.def Info: tf-eps-converted-to.pdf used on input line 480.
 (pdftex.def)             Requested size: 232.19843pt x 128.60371pt.
 Package epstopdf Info: Source file: <ml.eps>
-(epstopdf)                    date: 2019-01-27 12:30:00
+(epstopdf)                    date: 2019-02-17 17:04:15
 (epstopdf)                    size: 1156994 bytes
 (epstopdf)             Output file: <ml-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-01-27 12:30:00
+(epstopdf)                    date: 2019-02-17 17:04:15
 (epstopdf)                    size: 50403 bytes
 (epstopdf)             Command: <repstopdf --outfile=ml-eps-converted-to.pdf ml
 .eps>
-(epstopdf)             \includegraphics on input line 484.
+(epstopdf)             \includegraphics on input line 487.
 Package epstopdf Info: Output file is already uptodate.
 
 <ml-eps-converted-to.pdf, id=135, 613.29124pt x 487.8225pt>
 File: ml-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ml-eps-converted-to.pdf>
-Package pdftex.def Info: ml-eps-converted-to.pdf used on input line 484.
+Package pdftex.def Info: ml-eps-converted-to.pdf used on input line 487.
 (pdftex.def)             Requested size: 232.19843pt x 184.69711pt.
 
-Overfull \hbox (1.85895pt too wide) in paragraph at lines 497--497
+Overfull \hbox (1.85895pt too wide) in paragraph at lines 500--500
 []\OT1/ptm/b/n/8 Model| 
  []
 
 
-Overfull \hbox (2.78154pt too wide) in paragraph at lines 497--497
+Overfull \hbox (2.78154pt too wide) in paragraph at lines 500--500
 []\OT1/ptm/b/n/8 k=10| 
  []
 
 
-Overfull \hbox (2.78154pt too wide) in paragraph at lines 497--497
+Overfull \hbox (2.78154pt too wide) in paragraph at lines 500--500
 []\OT1/ptm/b/n/8 k=20| 
  []
 
 
-Overfull \hbox (3.93608pt too wide) in paragraph at lines 497--498
+Overfull \hbox (3.93608pt too wide) in paragraph at lines 500--501
 []\OT1/ptm/b/n/8 k=100| 
  []
 
 
-Overfull \hbox (5.13083pt too wide) in paragraph at lines 499--499
+Overfull \hbox (5.13083pt too wide) in paragraph at lines 502--502
 []\OT1/ptm/m/n/8 Time(s)| 
  []
 
 
-Overfull \hbox (3.77364pt too wide) in paragraph at lines 499--499
+Overfull \hbox (3.77364pt too wide) in paragraph at lines 502--502
 []\OT1/ptm/m/n/8 27.55| 
  []
 
 
-Overfull \hbox (3.77364pt too wide) in paragraph at lines 499--499
+Overfull \hbox (3.77364pt too wide) in paragraph at lines 502--502
 []\OT1/ptm/m/n/8 20.12| 
  []
 
 
-Overfull \hbox (3.77364pt too wide) in paragraph at lines 499--499
+Overfull \hbox (3.77364pt too wide) in paragraph at lines 502--502
 []\OT1/ptm/m/n/8 29.09| 
  []
 
 
-Overfull \hbox (3.77364pt too wide) in paragraph at lines 499--499
+Overfull \hbox (3.77364pt too wide) in paragraph at lines 502--502
 []\OT1/ptm/m/n/8 30.53| 
  []
 
 
-Overfull \hbox (3.77364pt too wide) in paragraph at lines 499--499
+Overfull \hbox (3.77364pt too wide) in paragraph at lines 502--502
 []\OT1/ptm/m/n/8 48.00| 
  []
 
 
-Overfull \hbox (3.77364pt too wide) in paragraph at lines 499--499
+Overfull \hbox (3.77364pt too wide) in paragraph at lines 502--502
 []\OT1/ptm/m/n/8 73.62| 
  []
 
 
-Overfull \hbox (4.92818pt too wide) in paragraph at lines 499--499
+Overfull \hbox (4.92818pt too wide) in paragraph at lines 502--502
 []\OT1/ptm/m/n/8 141.33| 
  []
 
 
-Overfull \hbox (4.92818pt too wide) in paragraph at lines 499--500
+Overfull \hbox (4.92818pt too wide) in paragraph at lines 502--503
 []\OT1/ptm/m/n/8 309.51| 
  []
 
@@ -688,11 +688,11 @@ Before submitting the final camera ready copy, remember to:
 
 [8 <./ml-eps-converted-to.pdf>] (./conference_041818.aux) ) 
 Here is how much of TeX's memory you used:
- 4631 strings out of 492995
- 67658 string characters out of 6132704
- 145514 words of memory out of 5000000
- 8099 multiletter control sequences out of 15000+600000
- 42880 words of font info for 87 fonts, out of 8000000 for 9000
+ 4633 strings out of 492995
+ 67670 string characters out of 6132704
+ 145518 words of memory out of 5000000
+ 8100 multiletter control sequences out of 15000+600000
+ 43958 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  39i,11n,35p,1788b,532s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/
@@ -712,7 +712,7 @@ sfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/u
 tmb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb
 ></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/loc
 al/texlive/2017/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on conference_041818.pdf (8 pages, 875206 bytes).
+Output written on conference_041818.pdf (8 pages, 875614 bytes).
 PDF statistics:
  257 PDF objects out of 1000 (max. 8388607)
  126 compressed objects within 2 object streams
