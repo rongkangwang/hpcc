@@ -214,7 +214,8 @@ Traffic collection is the beginning of all of the works. In order to get raw tra
 
 %Traffic collection is the beginning of all of the works. In order to get traffic of 10 VoIP applications mentioned above, we deploy 8 computers installed 10 kinds of VoIP applications. We installed 6 computers with Windows operating system, the others 2 computers installed with Linux operating system, because there are only 4 applications can be installed on Linux platform. We can establish ordinary VoIP calls among them, and they can dial the phone number directly. There are 4 cell phones ready to be called.
 
-For the purpose of labeling data easier, we use the process-based capture tool QPA under Windows operating system; We use tcpdump to capture traffic based on port, which can be known after process occupied. QPA provide GUI application under Windows OS, it is easy to use for capturing traffic for a single process. Under Linux platform, we need to get pid of a process, then we use command like "tcpdump -i eth\_name trans\_protocol port pid" to capture traffic of a specific process. Because of process-based and port-based capture, it is easy to label raw traffic with their process name. Traffic from various video and game software will be labeled as non-VoIP traffic.
+For the purpose of labeling data easier, we use the process-based capture tool QPA under Windows operating system; We use tcpdump to capture traffic based on port, which can be known after process occupied. QPA provide GUI application under Windows OS, it is easy to use for capturing traffic for a single process. Under Linux platform, we need to analyze the ports VoIP
+application uses, then we use command like "tcpdump -i eth\_name trans\_protocol port port_id" to capture traffic of specific ports. Because of process-based and port-based capture, it is easy to label raw traffic with their process name. Traffic from various video and game software will be labeled as non-VoIP traffic.
 
 We need to construct our training dataset with captured raw traffic. We process the raw traffic to k-packets, we use sliding window to select k-packet into our dataset. The length of the window is k, and the next step is random. It ensures that our dataset isn't overly similar or vague. Figure~\ref{fig:dataset} shows how we select 4 k-packets for $k=10$. In this paper, a variety of CLNN models are trained according to different k, including 2, 4, 6, 8, 10, 20, 40 and 100. We have 4 steps to convert a k-packet to matrix. 1) Remove IP and UDP header; 2) Add 2 timestamps to each packet, one is the time difference from the first packet, the other one is the time difference from the previous packet; 3) Convert the k-packet to matrix on the basis of ASCII code; 4) Normalize the matrix. The length of VoIP packets is generally small around 50$\sim$210, so we set column of the matrix to 256. The row of the matrix is k, indicating a k-packet includes k packets.
 
@@ -409,7 +410,7 @@ The forth column shows the num. of k-packet where k is 10, definitely, we also p
 \subsection{Parameter Setting}
 \label{sec:params}
 
-The optimization algorithm SGD used in training phase is not adaptive for learning rate, so the setting of learning rate has a direct impact on the experimental results. We learn from the general experience of deep learning, and we adjust it according to our experimental results. The initial learning rate is set to 0.01, it decays after 2 epochs following the rules mentioned in section 6.3.  Nesterov updates based on the gradient, we set momentum factor to 0.9. We train 20 epochs using the dataset for the above 8 models, we set batch size to 100. With these parameters, we get satisfactory results for every model. Table~\ref{tab:params} shows the number and storage size of weights identification model.
+The optimization algorithm SGD used in training phase is a learning rate non-adaptive algorithm, the setting of learning rate has a direct impact on the experimental results. We learn from the general experience of deep learning, and we adjust it according to our experimental results. The initial learning rate is set to 0.01, it decays after 2 epochs following the rules mentioned in section 6.3.  Nesterov updates based on the gradient, we set momentum factor to 0.9. We train 20 epochs using the dataset for the above 8 models, we set batch size to 100. With these parameters, we get satisfactory results for every model. Table~\ref{tab:params} shows the number and storage size of weights identification model.
 \begin{table}
   \caption{The details of CLNN parameters.}
   \label{tab:params}
@@ -418,14 +419,14 @@ The optimization algorithm SGD used in training phase is not adaptive for learni
     \hline
     \textbf{Model} & \textbf{Input\_Shape} & \textbf{Num. of Parm}&\textbf{Size(MB)}\\
     \hline
-    k=2      & ${2 \times 256 \times 1}$  & 21829483  &87.3  \\
-    k=4      & ${4 \times 256 \times 1}$  & 21829483  &87.3  \\
-    k=6      & ${6 \times 256 \times 1}$  & 38606699  &154.5  \\
-    k=8      & ${8 \times 256 \times 1}$  & 38606699  &154.5 \\
-    k=10     & ${10 \times 256 \times 1}$  & 55383915  &221.6  \\
-    k=20     & ${20 \times 256 \times 1}$  & 88938347  &355.8 \\
-    k=40     & ${40 \times 256 \times 1}$  & 172824427  &691.3  \\
-    k=100    & ${100 \times 256 \times 1}$  & 424482667  &1619.3  \\
+    k=2      & ${2 \times 256 \times 1}$  & 17,818,697  &87  \\
+    k=4      & ${4 \times 256 \times 1}$  & 17,820,823  &87  \\
+    k=6      & ${6 \times 256 \times 1}$  & 34,600,197  &154  \\
+    k=8      & ${8 \times 256 \times 1}$  & 34,602,387  &154 \\
+    k=10     & ${10 \times 256 \times 1}$  & 51,381,825  &221.6  \\
+    k=20     & ${20 \times 256 \times 1}$  & 84,947,847  &355.8 \\
+    k=40     & ${40 \times 256 \times 1}$  & 168,859,507  &691.3  \\
+    k=100    & ${100 \times 256 \times 1}$  & 420,613,687  &1619.3  \\
     \hline
   \end{tabular}
   %\caption{The details of Alexnet parameters.}
@@ -472,7 +473,7 @@ For the above 8 CLNN models, we use TPR (True Positive Rate) and FPR (False Posi
 \end{center}
 \end{figure*}
 
-In our experiment, the identification rate for dataset1 is close to 1. When we examine these 8 models with dataset2, there are some outliers. They can be seen in the first 4 charts shown on Figure~\ref{fig:fprtpr}, model-20 for Skype, model-4 for Xlite and so on. This means these 2 models that we trained is overfitting the dataset. In the future research, we consider add the L1-norm and L2-norm into our model, we will merge dataset2 into dataset1 to enlarge dataset to avoid overfitting. Apart from this, these charts show good performance to most of VoIP applications.
+In our experiment, the identification rate for dataset1 is close to 1. When we examine these 8 models with dataset2, there are some outliers. They can be seen in the first 4 charts shown on Figure~\ref{fig:fprtpr}, model-20 for Skype, model-4 for Xlite and so on. This means these models that we trained is overfitting the dataset. In the future research, we consider add the L1-norm and L2-norm into our model, we will merge dataset2 into dataset1 to enlarge dataset to avoid overfitting. Apart from this, these charts show good performance to most of VoIP applications.
 
 Figure~\ref{fig:tf} shows the probability distribution of true result and false result of dataset1 and dataset2, which true result means a k-packet is identified correctly and false result means a k-packet is identified incorrectly. It shows the maximum probabilities of true results are generally close to 1, and they are disperse from 0.2 to 0.98.
 \begin{figure}[htp]
