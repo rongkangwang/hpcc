@@ -85,7 +85,9 @@ Considering identification real-time performance, we separate the VoIP entire fl
 
 Our contributions are summarized as follow: 1) We designed CLNN model to extract features for voice flows, the CLNN model is able to extract features in both time and frequency domains, the extracted features are more reliable than extracted by humans. 2) We can identify a VoIP flow in acceptable time, we train subflow dataset instead of entire flow, it is a necessary condition for real-time identification. 3) We designed a real-time identification system to be deployed in large-scale networks, administrators can intercept VoIP traffic according to identification results.
 
-The remainder of this paper is structured as follows. In section \ref{sec:relatedwork}, we describe the previously published related works.  In section \ref{sec:methodology}, there is a brief introduction to several methods used in our work. Then we present the architecture of our real-time identification system in section \ref{sec:architecture}. In sections \ref{sec:trafficcollectionandprocessing}, \ref{sec:learningusingdeeplearningmodel} and \ref{sec:realtimeidentification}, we describe the dataset and CLNN models used for learning, and how to perform real-time identification. The performance evaluation is shown in section \ref{sec:performanceevaluation}. The conclusion is shown in section \ref{sec:conclusion}.
+The remainder of this paper is structured as follows. In section \ref{sec:relatedwork}, we describe the previously published related works.  In section \ref{sec:methodology}, there is a brief introduction to several methods used in our work. 
+%Then we present the architecture of our real-time identification system in section \ref{sec:architecture}. 
+In sections \ref{sec:trafficcollectionandprocessing}, \ref{sec:learningusingdeeplearningmodel} and \ref{sec:realtimeidentification}, we describe the dataset and CLNN models used for learning, and how to perform real-time identification. The performance evaluation is shown in section \ref{sec:performanceevaluation}. The conclusion is shown in section \ref{sec:conclusion}.
 
 
 
@@ -162,7 +164,7 @@ In order to verify VoIP flows carry the features that support identification, we
   \end{tabular}
 \end{table}
 
-In order to identify VoIP flows timely, we extract features for subflows (we use $subflow^k$ in the following, which means a subflow includes k packets) which consist of several continuous VoIP packets from a VoIP flow. The first thing is to build training dataset for subflows, constructing and labeling dataset is troublesome for researchers. In order to get raw VoIP traffic, we deploy several computers installed with VoIP applications in real network. To label them accurately, we adopt some traffic capture tools which are process-based. They can help us get pure raw traffic for each application, so we can label traffic using the name of VoIP applications. Next problem is how to construct our training dataset with raw traffic data and ensure the dataset is uniform as soon as possible. We design a sampling method that uses sliding window to select $subflow^k$ into training dataset, the next step is randomized in [1, k]. This method not only promises the dataset is uniform but also reduces the training works. In order to identify non-VoIP traffic, we collected non-VoIP flows including video flows and real-time game flows, etc. Actually, non-VoIP traffic can also be classified more detailed, in our works, they will all be identified as non-VoIP traffic.
+In order to identify VoIP flows timely, we extract features for subflows (in the following, we use $subflow^k$ denotes that one subflow includes k packets) which consist of several continuous VoIP packets from a VoIP flow. The first thing is to build training dataset for subflows, constructing and labeling dataset is troublesome for researchers. In order to get raw VoIP traffic, we deploy several computers installed with VoIP applications in real network. To label them accurately, we adopt some traffic capture tools which are process-based. They can help us get pure raw traffic for each application, so we can label traffic using the name of VoIP applications. Next problem is how to construct our training dataset with raw traffic data and ensure the dataset is uniform as soon as possible. We design a sampling method that uses sliding window to select $subflow^k$ into training dataset, the next step is randomized in [1, k]. This method not only promises the dataset is uniform but also reduces the training works. In order to identify non-VoIP traffic, we collected non-VoIP flows including video flows and real-time game flows, etc. Actually, non-VoIP traffic can also be classified more detailed, in our works, they will all be identified as non-VoIP traffic.
 
 
 
@@ -183,21 +185,21 @@ Collecting raw traffic data, constructing and labeling dataset and training data
 %the key to generate a $subflow^k$. We identify the $subflow^k$ with the offline identification model. The identification result will be saved as the value The following traffic whose key equals we use <srcIP, dstIP, srcPort, dstPort> as key, we capture $subflow^k$ following the quad-tuple. After we get the identification result for a $subflow^k$,
 %About training, we apply several classic deep neural network models to train our dataset. For images, the identification rate of deep neural networks has exceeded the rate of human eyes. We believe that deep neural network can achieve good result in VoIP identification field.
 
-\section{Architecture}
-\label{sec:architecture}
-In this section, we introduce the architecture of our real-time identification system. There are 2 main phases in our architecture, offline training and online identification. We introduce the architecture of these 2 phases separately.
+%\section{Architecture}
+%\label{sec:architecture}
+%In this section, we introduce the architecture of our real-time identification system. There are 2 main phases in our architecture, offline training and online identification. We introduce the architecture of these 2 phases separately.
 %In this section, we introduce the architecture of real-time identification system and give a basic overview of the 2 main phases in the architecture. There are 2 main phases in our architecture, training phase and identification phase.
-Our architecture is shown in Figure~\ref{fig:architecture}.
+%Our architecture is shown in Figure~\ref{fig:architecture}.
 
-\begin{figure}[htp]
-\begin{center}
-\includegraphics[width=0.47\textwidth]{architecture.eps}
-\caption{Architecture of identification system.}\label{fig:architecture}
-\end{center}
-\end{figure}
+%\begin{figure}[htp]
+%\begin{center}
+%\includegraphics[width=0.47\textwidth]{architecture.eps}
+%\caption{Architecture of identification system.}\label{fig:architecture}
+%\end{center}
+%\end{figure}
 
-\subsection{Offline Training}
-In offline training phase, we extract features for 11 kinds of flows, which include 10 kinds of VoIP application flows and non-VoIP flows. Our goal is to maximize the accuracy of training and validation data. There are mainly 2 procedures, data preprocessing and model training. In preprocessing procedure, we random select $subflow^k$ with sliding window and label them with their application name. These $subflow^k$s and their labels will be processed into matrices as input of CLNN model. In training procedure, it is going to minimize the loss function to find an optimal function for identification. The output of training procedure is the feature set that we will use in real-time identification phase. We use the feature set to train VoIP application classifier, which is the final component of online identification phase.
+%\subsection{Offline Training}
+%In offline training phase, we extract features for 11 kinds of flows, which include 10 kinds of VoIP application flows and non-VoIP flows. Our goal is to maximize the accuracy of training and validation data. There are mainly 2 procedures, data preprocessing and model training. In preprocessing procedure, we random select $subflow^k$ with sliding window and label them with their application name. These $subflow^k$ and their labels will be processed into matrices as input of CLNN model. In training procedure, it is going to minimize the loss function to find an optimal function for identification. The output of training procedure is the feature set that we will use in real-time identification phase. We use the feature set to train VoIP application classifier, which is the final component of online identification phase.
 %Offline training detailed in Figure~\ref{fig:offline_architecture.eps}.
 
 %\begin{figure}[htp]
@@ -207,10 +209,10 @@ In offline training phase, we extract features for 11 kinds of flows, which incl
 %\end{center}
 %\end{figure}
 
-\subsection{Online Identification}
-Online identification is based on the output of offline training. In this phase, we build flows for traffic in large-scale network. We parse IP address and UDP port as its key for each packet. We maintain a key-value database for these keys. If the value of the corresponding key has been set, the value is the identification result of the packet. If the value is empty, we search the key in pending flows database and add this packet into corresponding pending flow. When a pending flow is ready to be identified, it will be identified by identification model and set the identification result in database.  %Figure~\ref{fig:online_architecture.eps},
+%\subsection{Online Identification}
+%Online identification is based on the output of offline training. In this phase, we build flows for traffic in large-scale network. We parse IP address and UDP port as its key for each packet. We maintain a key-value database for these keys. If the value of the corresponding key has been set, the value is the identification result of the packet. If the value is empty, we search the key in pending flows database and add this packet into corresponding pending flow. When a pending flow is ready to be identified, it will be identified by identification model and set the identification result in database.  %Figure~\ref{fig:online_architecture.eps},
 
-As the Figure~\ref{fig:architecture} shows, the number of pending flow key\_3 reaches k, it is ready to be identified. We show 2 captured packets whose keys are key\_1 and key\_2, packet corresponding to key\_1 will be real-time identified by querying the database, packet corresponding to key\_2 will be appended into its pending flow.
+%As the Figure~\ref{fig:architecture} shows, the number of pending flow key\_3 reaches k, it is ready to be identified. We show 2 captured packets whose keys are key\_1 and key\_2, packet corresponding to key\_1 will be real-time identified by querying the database, packet corresponding to key\_2 will be appended into its pending flow.
 
 %Identification phase is the final part of our system. In this phase, we use identification model to identify the $subflow^k$ captured in real-time. This phase includes 3 procedures, inspection of VoIP traffic, preprocessing and identification. In inspection procedure, we detect beginning of a VoIP connection. After this, we capture a $subflow^k$ and convert it to matrix in preprocessing procedure. Then we input the matrix into identification model, the identification model give us the result which is a specific VoIP application.
 %\begin{figure}[htp]
@@ -230,7 +232,7 @@ Traffic collection is the beginning of all of the works. In order to get raw tra
 For the purpose of labeling data easier, we use the process-based capture tool QPA under Windows operating system; We use tcpdump to capture traffic based on port, which can be known after process occupied. QPA provide GUI application under Windows OS, it is easy to use for capturing traffic for a single process. Under Linux platform, we need to analyze the ports VoIP
 application uses, then we use command like "tcpdump -i eth\_name trans\_protocol port port\_id" to capture traffic of specific ports. Because of process-based and port-based capture, it is easy to label raw traffic with their process name. Traffic from various video and game software will be labeled as non-VoIP traffic.
 
-We need to construct our training dataset with captured raw traffic. We process the raw traffic to $subflow^k$ dataset, we use sliding window to select $subflow^k$ into our dataset. The length of the window is k, and the next step is random. It ensures that our dataset isn't overly similar or vague. Figure~\ref{fig:dataset} shows how we select 4 $subflow^k$s for $k=10$. In this paper, a variety of CLNN models are trained according to different k, including 2, 4, 6, 8, 10, 20, 40 and 100. We have 4 steps to convert a $subflow^k$ to matrix. 1) Remove IP and UDP header; 2) Add 2 timestamps to each packet, one is the time difference from the first packet, the other one is the time difference from the previous packet; 3) Convert the $subflow^k$ to matrix on the basis of ASCII code; 4) Normalize the matrix. The length of VoIP packets is generally small around 50$\sim$210, so we set column of the matrix to 256. The row of the matrix is k, indicating a $subflow^k$ includes k packets.
+We need to construct our training dataset with captured raw traffic. We process the raw traffic to $subflow^k$ dataset, we use sliding window to select $subflow^k$ into our dataset. The length of the window is k, and the next step is random. It ensures that our dataset isn't overly similar or vague. Figure~\ref{fig:dataset} shows how we select 4 $subflow^k$ for $k=10$. In this paper, a variety of CLNN models are trained according to different k, including 2, 4, 6, 8, 10, 20, 40 and 100. We have 4 steps to convert a $subflow^k$ to matrix. 1) Remove IP and UDP header; 2) Add 2 timestamps to each packet, one is the time difference from the first packet, the other one is the time difference from the previous packet; 3) Convert the $subflow^k$ to matrix on the basis of ASCII code; 4) Normalize the matrix. The length of VoIP packets is generally small around 50$\sim$210, so we set column of the matrix to 256. The row of the matrix is k, indicating a $subflow^k$ includes k packets.
 
 %Before training with deep learning model, we need to preprocess packets to $subflow^k$. In this paper, a variety of identification models are trained according to different k, including 2, 4, 6, 8, 10, 20, 40 and 100. To get different datasets for each k value, we set the size of sliding window equals k, and select random step length value from 1-k. Figure~\ref{fig:dataset} shows how we building dataset for $k=10$. There are 3 steps that we convert a $subflow^k$ to matrix. 1) Remove IP and UDP header; 2) Convert the $subflow^k$ to matrix on the basis of ASCII code; 3) Normalize the matrix. The length of VoIP packets is generally small around 50\~210, so we set column of the matrix to 256. The row of the matrix is k, indicating a $subflow^k$ includes k packets.
 \begin{figure}[htp]
@@ -243,7 +245,7 @@ We need to construct our training dataset with captured raw traffic. We process 
 \section{Learning with CLNN model}
 \label{sec:learningusingdeeplearningmodel}
 \subsection{CLNN model}
-In 1990s, Y Lecun et al. did the research of handwritten digit recognition with a back-propagation network~\cite{lecun1990handwritten}. And they designed a LeNet-5 for handwritten digit recognition~\cite{6}, which establish the structure of modern CNN network. With the rise of artificial intelligence technology, more and more excellent deep learning models appear. ~\cite{8} published an incredible neural network called AlexNet, this model get the best performance in the ImageNet competition held in 2012. After this, VGG, GoogleNet and ResNet were proposed for different classification task~\cite{9,10,11}. CNN is good at digit recognition, by contrast, LSTM is commonly used for speech recognition. LSTM is proposed for solving the gradient problem in RNN networks~\cite{lstm}.
+In 1990s, Y Lecun et al. adopted a back-propagation network in their handwritten digit recognition research~\cite{lecun1990handwritten}. And they designed a LeNet-5 model for handwritten digit recognition in~\cite{6}, which establish the structure of modern CNN network. With the rise of artificial intelligence technology, more and more excellent deep learning models appear. An incredible neural network called AlexNet was published in ~\cite{8}, this model got the best performance in the ImageNet competition held in 2012. After this, VGG, GoogleNet and ResNet were proposed for different recognition task~\cite{9,10,11}. CNN is good at digit recognition, by contrast, LSTM is commonly used for speech recognition. LSTM is proposed for solving the gradient problem in RNN networks~\cite{lstm}.
 
 %We compare CNN, AlexNet and GoogleNet with k set to 20 using a small part of dataset. The accuracy of CNN is above 94\%, the accuracies of AlexNet and GoogleNet are close to 1. GoogleNet costs more time and space than the other 2 models. We did comprehensive consideration about accuracy, efficiency, hardware requirements, data set size and other conditions, we decide to use AlexNet in the next further training. With the increase of dataset, we can use the models with a deeper network structure such as GoogleNet and ResNet.
 
@@ -300,7 +302,13 @@ Our method is to get a more precise feature set for identifying VoIP traffic. Th
 \section{Real-time identification}
 \label{sec:realtimeidentification}
 
-In this section, we introduce how to real-time identify VoIP traffic with our identification system. There are 3 main components in real-time identification module. Capturer capture UDP packets and separate them into corresponding flows by IP address and UDP port. Filter follows several rules to filter out obvious non-VoIP flows. Classifier classifies flows into corresponding application type with extracted features. The basic architecture is shown in Figure~\ref{fig:architecture}.
+In this section, we introduce how to real-time identify VoIP traffic with our identification system. There are 3 main components in real-time identification module. Capturer capture UDP packets and separate them into corresponding flows by IP address and UDP port. Filter follows several rules to filter out obvious non-VoIP flows. Classifier classifies flows into corresponding application type with extracted features. The basic architecture is shown in Figure~\ref{fig:online_architecture_new}.
+\begin{figure}[htp]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{online_architecture_new.eps}
+\caption{Architecture of online real-time identification system.}\label{fig:online_architecture_new}
+\end{center}
+\end{figure}
 
 %In order to capture the VoIP traffic in real time, we design a real-time traffic capturer. This capturer can capture UDP traffic and separate flows by IP address and UDP port. There is a rule-based filter to filter out non-VoIP flows preliminarily, the remaining flows will be sent to the classifier. The classifier will accurately classify flows according to application type.
 
@@ -427,7 +435,7 @@ We divide captured traffic into 2 dataset. We use dataset1 to train CLNN model, 
   %\caption{The details of dataset1.}
 \end{table}
 
-The forth column shows the num. of $subflow^k$ where k is 10, definitely, we also process the dataset according to k is 2, 4, 6, 8 and so on. It decides the first dimension of the matrix that will be input into CLNN model. 80\% of the $subflow^k$s are used for training when 20\% used for validating in training pahse.
+The forth column shows the num. of $subflow^k$ where k is 10, definitely, we also process the dataset according to k is 2, 4, 6, 8 and so on. It decides the first dimension of the matrix that will be input into CLNN model. 80\% of the $subflow^k$ are used for training when 20\% used for validating in training pahse.
 
 \subsection{Parameter Setting}
 \label{sec:params}

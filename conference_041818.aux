@@ -23,56 +23,59 @@
 \newlabel{sec:methodology}{{III}{2}}
 \@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Codecs used by VoIP applications.}}{2}}
 \newlabel{tab:codecs}{{I}{2}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Architecture}{3}}
-\newlabel{sec:architecture}{{IV}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}}Offline Training}{3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Architecture of identification system.}}{3}}
-\newlabel{fig:architecture}{{1}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}Online Identification}{3}}
+\citation{lecun1990handwritten}
 \citation{6}
-\citation{7}
 \citation{8}
-\citation{9}
-\citation{10}
-\citation{11}
+\citation{9,10,11}
+\citation{lstm}
 \citation{clnn}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Traffic Collection and Processing}{4}}
-\newlabel{sec:trafficcollectionandprocessing}{{V}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces How to process raw traffic to get k-packets(k=10).}}{4}}
-\newlabel{fig:dataset}{{2}{4}}
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Learning with CLNN model}{4}}
-\newlabel{sec:learningusingdeeplearningmodel}{{VI}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-A}}CLNN model}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Basic principles for extracting representations with CLNN model.}}{4}}
-\newlabel{fig:cnnlstm}{{3}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-B}}Learning}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-C}}Feature Set}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {VII}Real-time identification}{5}}
-\newlabel{sec:realtimeidentification}{{VII}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Traffic Collection and Processing}{3}}
+\newlabel{sec:trafficcollectionandprocessing}{{IV}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces How to process raw traffic to build $subflow^k$ dataset(k=10).}}{3}}
+\newlabel{fig:dataset}{{1}{3}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Learning with CLNN model}{3}}
+\newlabel{sec:learningusingdeeplearningmodel}{{V}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-A}}CLNN model}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Basic principles for extracting representations with CLNN model.}}{4}}
+\newlabel{fig:cnnlstm}{{2}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-B}}Learning}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-C}}Feature Set}{4}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Real-time identification}{4}}
+\newlabel{sec:realtimeidentification}{{VI}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Architecture of online real-time identification system.}}{5}}
+\newlabel{fig:online_architecture_new}{{3}{5}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces To separate flows by IP address and UDP port in real network.}}{5}}
 \newlabel{fig:flow}{{4}{5}}
 \@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Benchmark value and threshold used in Algorithm\nobreakspace  {}1\hbox {}.}}{5}}
 \newlabel{tab:rules}{{II}{5}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Algorithm to identify VoIP/non-VoIP Flows}}{6}}
-\newlabel{algorithm:filter}{{1}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Storm topology of online identification system.}}{6}}
-\newlabel{fig:storm}{{5}{6}}
-\@writefile{toc}{\contentsline {section}{\numberline {VIII}Performance evaluation}{6}}
-\newlabel{sec:performanceevaluation}{{VIII}{6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VIII-A}}Dataset}{6}}
-\newlabel{sec:dataset}{{\unhbox \voidb@x \hbox {VIII-A}}{6}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Algorithm to identify VoIP/non-VoIP Flows}}{5}}
+\newlabel{algorithm:filter}{{1}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Storm topology of online identification system.}}{5}}
+\newlabel{fig:storm}{{5}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Performance evaluation}{6}}
+\newlabel{sec:performanceevaluation}{{VII}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VII-A}}Dataset}{6}}
+\newlabel{sec:dataset}{{\unhbox \voidb@x \hbox {VII-A}}{6}}
 \@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces The details of dataset1.}}{6}}
 \newlabel{tab:traffic}{{III}{6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VIII-B}}Parameter Setting}{6}}
-\newlabel{sec:params}{{\unhbox \voidb@x \hbox {VIII-B}}{6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VIII-C}}Experiment Results}{6}}
-\newlabel{sec:experimentresults}{{\unhbox \voidb@x \hbox {VIII-C}}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VII-B}}Parameter Setting}{6}}
+\newlabel{sec:params}{{\unhbox \voidb@x \hbox {VII-B}}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VII-C}}Experiment Results}{6}}
+\newlabel{sec:experimentresults}{{\unhbox \voidb@x \hbox {VII-C}}{6}}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces The details of CLNN parameters.}}{6}}
+\newlabel{tab:params}{{IV}{6}}
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces The training and validating accuracy of 8 CLNN models.}}{6}}
+\newlabel{tab:acc4models}{{V}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Conclusion}{6}}
+\newlabel{sec:conclusion}{{VIII}{6}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces The performance of the 8 CLNN models shown by TPR and FPR.}}{7}}
 \newlabel{fig:fprtpr}{{6}{7}}
-\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces The details of CLNN parameters.}}{7}}
-\newlabel{tab:params}{{IV}{7}}
-\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces The training and validating accuracy of 8 CLNN models.}}{7}}
-\newlabel{tab:acc4models}{{V}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces The probability distribution of true result and false result.}}{7}}
+\newlabel{fig:tf}{{7}{7}}
+\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces The time consumed to identify 100 flows.}}{7}}
+\newlabel{tab:time4folws}{{VI}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces The accuracy of 4 machine learning methods using extracted feature set.}}{7}}
+\newlabel{fig:ml}{{8}{7}}
 \bibstyle{IEEEtran}
 \bibdata{IEEEabrv,reference}
 \bibcite{14}{1}
@@ -92,19 +95,12 @@
 \bibcite{3}{15}
 \bibcite{22}{16}
 \bibcite{1}{17}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces The probability distribution of true result and false result.}}{8}}
-\newlabel{fig:tf}{{7}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces The accuracy of 4 machine learning methods using extracted feature set.}}{8}}
-\newlabel{fig:ml}{{8}{8}}
-\@writefile{toc}{\contentsline {section}{\numberline {IX}Conclusion}{8}}
-\newlabel{sec:conclusion}{{IX}{8}}
-\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces The time consumed to identify 100 flows.}}{8}}
-\newlabel{tab:time4folws}{{VI}{8}}
-\@writefile{toc}{\contentsline {section}{References}{8}}
-\bibcite{6}{18}
-\bibcite{7}{19}
+\bibcite{lecun1990handwritten}{18}
+\bibcite{6}{19}
 \bibcite{8}{20}
 \bibcite{9}{21}
 \bibcite{10}{22}
 \bibcite{11}{23}
-\bibcite{clnn}{24}
+\bibcite{lstm}{24}
+\bibcite{clnn}{25}
+\@writefile{toc}{\contentsline {section}{References}{8}}
