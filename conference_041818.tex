@@ -243,7 +243,7 @@ We need to construct our training dataset with captured raw traffic. We process 
 \section{Learning with CLNN model}
 \label{sec:learningusingdeeplearningmodel}
 \subsection{CLNN model}
-With the rise of artificial intelligence technology, more and more excellent deep learning models appear. The oldest is CNN (Convolutional Neural Network) proposed by~\cite{6}. The LeNet is a development of the CNN proposed by~\cite{7}.~\cite{8} published an incredible neural network called AlexNet, this model get the best performance in the ImageNet competition held in 2012.~\cite{9} proposed VGG. The GoogleNet make a daring attempt in the design of the network, which proposed by~\cite{10}.~\cite{11} proposed ResNet, which has a deeper network structure up to 152 layers.
+In 1990s, Y Lecun et al. did the research of handwritten digit recognition with a back-propagation network~\cite{lecun1990handwritten}. And they designed a LeNet-5 for handwritten digit recognition~\cite{6}, which establish the structure of modern CNN network. With the rise of artificial intelligence technology, more and more excellent deep learning models appear. ~\cite{8} published an incredible neural network called AlexNet, this model get the best performance in the ImageNet competition held in 2012. After this, VGG, GoogleNet and ResNet were proposed for different classification task~\cite{9,10,11}. CNN is good at digit recognition, by contrast, LSTM is commonly used for speech recognition. LSTM is proposed for solving the gradient problem in RNN networks~\cite{lstm}.
 
 %We compare CNN, AlexNet and GoogleNet with k set to 20 using a small part of dataset. The accuracy of CNN is above 94\%, the accuracies of AlexNet and GoogleNet are close to 1. GoogleNet costs more time and space than the other 2 models. We did comprehensive consideration about accuracy, efficiency, hardware requirements, data set size and other conditions, we decide to use AlexNet in the next further training. With the increase of dataset, we can use the models with a deeper network structure such as GoogleNet and ResNet.
 
@@ -300,7 +300,7 @@ Our method is to get a more precise feature set for identifying VoIP traffic. Th
 \section{Real-time identification}
 \label{sec:realtimeidentification}
 
-In this section, we introduce how to real-time identify VoIP traffic with our identification system. There are 3 main components in real-time identification module. Capturer capture UDP packets and separate them into corresponding flows by IP address and UDP port. Filter follows several rules to filter out obvious non-VoIP flows. Classifier classifies flows into corresponding application type with extracted features.
+In this section, we introduce how to real-time identify VoIP traffic with our identification system. There are 3 main components in real-time identification module. Capturer capture UDP packets and separate them into corresponding flows by IP address and UDP port. Filter follows several rules to filter out obvious non-VoIP flows. Classifier classifies flows into corresponding application type with extracted features. The basic architecture is shown in Figure~\ref{fig:architecture}.
 
 %In order to capture the VoIP traffic in real time, we design a real-time traffic capturer. This capturer can capture UDP traffic and separate flows by IP address and UDP port. There is a rule-based filter to filter out non-VoIP flows preliminarily, the remaining flows will be sent to the classifier. The classifier will accurately classify flows according to application type.
 
@@ -401,7 +401,7 @@ We adopt Apache Storm as our stream processing computation engine, and Apache Ka
 In this section, we introduce the dataset used in our experiment firstly. Secondly, we give the specific parameters used in the CLNN model. Finally, we show the experimental results and give the evaluation of the system performance.
 \subsection{Dataset}
 \label{sec:dataset}
-We divide captured traffic into 2 dataset. We use CLNN model to train dataset1, and we use dataset2 to examine extracted features. The details of dataset1 used for training shown in Table~\ref{tab:traffic}.
+We divide captured traffic into 2 dataset. We use dataset1 to train CLNN model, dataset2 is replayed by tcpreplay to examine real-time identification system. The details of dataset1 used for training shown in Table~\ref{tab:traffic}.
 
 \begin{table}[htbp]
   \caption{The details of dataset1.}
@@ -478,7 +478,7 @@ The dataset listed in Section~\ref{sec:dataset} is used to train. With the param
   %\caption{The training and validating accuracy of 8 identification models.}
 \end{table}
 
-For the above 8 CLNN models, we use TPR (True Positive Rate) and FPR (False Positive Rate) to evaluate them. TPR reflects the probability of positive samples are identified correctly, and FPR reflects the probability of negative samples are identified as positive samples incorrectly. 
+For the above 8 CLNN models, we use TPR (True Positive Rate) and FPR (False Positive Rate) to evaluate them. TPR reflects the probability of positive samples are identified correctly, when FPR reflects the probability of negative samples are identified as positive samples incorrectly. 
 %TPR can be computed by Equation 5.
 %\begin{equation}
 %TPR = \frac{{TP}}{{TP + FN}}
