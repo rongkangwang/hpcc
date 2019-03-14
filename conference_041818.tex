@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{multirow}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
@@ -415,7 +416,7 @@ We divide captured traffic into 2 dataset. We use dataset1 to train CLNN model, 
   \caption{The details of dataset1.}
   \label{tab:traffic}
   \centering
-  \begin{tabular}{l l l l}
+  \begin{tabular}{c l c c}
     \hline
     \textbf{VoIP} & \textbf{Platform} & \textbf{Size(MB)}& \textbf{Num.(k=10)}\\
     \hline
@@ -440,12 +441,12 @@ The forth column shows the num. of $subflow^k$ where k is 10, definitely, we als
 \subsection{Parameter Setting}
 \label{sec:params}
 
-The optimization algorithm SGD used in training phase is a learning rate non-adaptive algorithm, the setting of learning rate has a direct impact on the experimental results. We learn from the general experience of deep learning, and we adjust it according to our experimental results. The initial learning rate is set to 0.01, it decays after 2 epochs following the rules mentioned in section 6.3.  Nesterov updates based on the gradient, we set momentum factor to 0.9. We train 20 epochs using the dataset for the above 8 models, we set batch size to 100. With these parameters, we get satisfactory results for every model. Table~\ref{tab:params} shows the number and storage size of weights identification model.
+The optimization algorithm SGD used in training phase is a learning rate non-adaptive algorithm, the setting of learning rate has a direct impact on the experimental results. We learn from the general experience of deep learning, and we adjust it according to our experimental results. The initial learning rate is set to 0.01, it decays after 2 epochs following the rules mentioned in section 6.3. Nesterov updates based on the gradient, we set momentum factor to 0.9. We train the dataset 20 epochs with batch size 50, 100 and 200. Table~\ref{tab:params} shows the number and storage size of weights identification model.
 \begin{table}
   \caption{The details of CLNN parameters.}
   \label{tab:params}
   \centering
-  \begin{tabular}{l l l l}
+  \begin{tabular}{l c c c}
     \hline
     \textbf{Model} & \textbf{Input\_Shape} & \textbf{Num. of Parm}&\textbf{Size(MB)}\\
     \hline
@@ -464,29 +465,40 @@ The optimization algorithm SGD used in training phase is a learning rate non-ada
 
 \subsection{Experiment Results}
 \label{sec:experimentresults}
-The dataset listed in Section~\ref{sec:dataset} is used to train. With the parameter setting in Section~\ref{sec:params}, we get 8 feature sets for different k. The training and validating accuracies are shown in Table~\ref{tab:acc4models}.
-\begin{table}
+The dataset listed in Section~\ref{sec:dataset} is used to train. With the parameters setting in Section~\ref{sec:params}, we get 8 CLNN models for different k. The training and validating accuracies are shown in Table~\ref{tab:acc4models}. As the table shows, identification accuracy is correlated with batch size and packets number. Smaller batch size is able to get higher accuracy, but it will take more time in traing phase. Identifying subflows with more packets will get higher accuracy, but a higher k means also reduce the real-time performance of identification system. We need to balance the training time, real-time performance and identification accuracy in different scenarios.
+
+
+\begin{table*}[htp]
   \caption{The training and validating accuracy of 8 CLNN models.}
   \label{tab:acc4models}
   \centering
-  \begin{tabular}{l l l l}
+  \begin{tabular}{l c c c c c c c c c}
     \hline
-    \textbf{Model} & \textbf{Loss} & \textbf{Train Acc.}&\textbf{Validate Acc.}\\
+    \multirow{2}{*}{\textbf{Model}} & \multicolumn{3}{c}{\textbf{Batch Size=50}} & \multicolumn{3}{c}{\textbf{Batch Size=100}}&\multicolumn{3}{c}{\textbf{Batch Size=200}}\\
+    \cline{2-10}
+    &Loss&Training Acc.&Validating Acc.&Loss&Training Acc.&Validating Acc.&Loss&Training Acc.&Validating Acc.\\
     \hline
-    k=2      & 0.015865  & 0.995560  &0.996130  \\
-    k=4      & 0.007670  & 0.997700  &0.997860 \\
-    k=6      & 0.004933  & 0.998520  &0.999340 \\
-    k=8      & 0.004393  & 0.998690  &0.999130 \\
-    k=10     & 0.001159  & 0.999650  &0.999650  \\
-    k=20     & 0.000546  & 0.999880  &0.999880 \\
-    k=40     & 0.002920  & 0.999120  &0.999460  \\
-    k=100    & 0.006689  & 0.997620  &0.998730  \\
+    k=2      & 0.522122  & 0.823860  &0.834630 & 0.795628  & 0.658820  &0.672410 & 0.901531  & 0.605440  &0.635330  \\
+
+    k=4      & 0.063926  & 0.989410  &0.997860& 0.320275  & 0.874420  &0.893790& 0.781780  & 0.627210  &0.647860 \\
+
+    k=6      & 0.016822  & 0.996520  &0.999340& 0.091234  & 0.987550  &0.999340& 0.493562  & 0.924250  &0.939340 \\
+
+    k=8      & 0.008969  & 0.998390  &0.999130& 0.034948  & 0.994830  &0.999130& 0.411541  & 0.949210  &0.949130 \\
+
+    k=10     & 0.018781  & 0.998150  &0.999650& 0.018984  & 0.997710  &0.999650& 0.246316  & 0.983630  &0.999650  \\
+
+    k=20     & 0.004145  & 0.998620  &0.999880& 0.007481  & 0.998520  &0.999880& 0.028801  & 0.997570  &0.999880 \\
+
+    k=40     & 0.001125  & 0.999730  &0.999460& 0.014981  & 0.996530  &0.999460& 0.144059  & 0.992870  &0.999460  \\
+
+    k=100    & 0.000329  & 1.000000  &1.000000& 0.001795  & 0.999620  &0.999730& 0.059798  & 0.978120  &0.998730  \\
     \hline
   \end{tabular}
   %\caption{The training and validating accuracy of 8 identification models.}
-\end{table}
+\end{table*}
 
-For the above 8 CLNN models, we use TPR (True Positive Rate) and FPR (False Positive Rate) to evaluate them. TPR reflects the probability of positive samples are identified correctly, when FPR reflects the probability of negative samples are identified as positive samples incorrectly. 
+For the above 8 CLNN models, we use TPR (True Positive Rate) to evaluate them. TPR reflects the probability of positive samples are identified correctly. 
 %TPR can be computed by Equation 5.
 %\begin{equation}
 %TPR = \frac{{TP}}{{TP + FN}}
@@ -498,14 +510,18 @@ For the above 8 CLNN models, we use TPR (True Positive Rate) and FPR (False Posi
 
 \begin{figure*}[htp]
 \begin{center}
-\includegraphics[width=1\textwidth]{fprtpr-hpcc.eps}
-\caption{The performance of the 8 CLNN models shown by TPR and FPR.}\label{fig:fprtpr}
+\includegraphics[width=1\textwidth]{clnn-batch.eps}
+\caption{The performance of the 8 CLNN models shown by TPR.}\label{fig:fprtpr}
 \end{center}
 \end{figure*}
 
-In our experiment, the identification rate for dataset1 is close to 1. When we examine these 8 models with dataset2, there are some outliers. They can be seen in the first 4 charts shown on Figure~\ref{fig:fprtpr}, model-20 for Skype, model-4 for Xlite and so on. This means these models that we trained is overfitting the dataset. In the future research, we consider add the L1-norm and L2-norm into our model, we will merge dataset2 into dataset1 to enlarge dataset to avoid overfitting. Apart from this, these charts show good performance to most of VoIP applications.
+Figure~\ref{fig:fprtpr} shows the performace of the 8 CLNN for each VoIP application. VoIP traffic with obvious identification features can be accurately identified even k value is small, the accuracies of Skype, Xlite and Jumblo can reach above 90 when k is 2. VoIP applications with very similar statistical features need more packets to support identification. For example, both Eyebeam and ExpressTalk adopt ITU-T G.711 PCMU as their codec, but these 2 VoIP applications adopt different packing times. So identifying them requires more temporal domain features, which means a higher k. The last chart shows the probabilities of the true samples, which true samples means a $subflow^k$ is identified correctly. It reflects a higher k can get a more credible identification results.
 
-Figure~\ref{fig:tf} shows the probability distribution of true result and false result of dataset1 and dataset2, which true result means a $subflow^k$ is identified correctly and false result means a $subflow^k$ is identified incorrectly. It shows the maximum probabilities of true results are generally close to 1, and they are disperse from 0.2 to 0.98.
+%In our experiment, the identification rate for dataset1 is close to 1. When we examine these 8 models with dataset2, there are some outliers. They can be seen in the first 4 charts shown on Figure~\ref{fig:fprtpr}, model-20 for Skype, model-4 for Xlite and so on. This means these models that we trained is overfitting the dataset. In the future research, we consider add the L1-norm and L2-norm into our model, we will merge dataset2 into dataset1 to enlarge dataset to avoid overfitting. Apart from this, these charts show good performance to most of VoIP applications.
+
+Figure~\ref{fig:tf} shows the probability distribution of true samples and false samples(batch size=100, k=40). 
+%which true result means a $subflow^k$ is identified correctly and false result means a $subflow^k$ is identified incorrectly. 
+It shows the maximum probabilities of true results are generally close to 1, and they are disperse from 0.2 to 0.98. 
 \begin{figure}[htp]
 \begin{center}
 \includegraphics[width=0.45\textwidth]{tf.eps}
